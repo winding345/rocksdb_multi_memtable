@@ -987,6 +987,7 @@ if(WITH_TESTS)
   endif()
 
   set(BENCHMARKS
+    db/mytest.cpp
     cache/cache_bench.cc
     memtable/memtablerep_bench.cc
     db/range_del_aggregator_bench.cc
@@ -1010,7 +1011,7 @@ if(WITH_TESTS)
       table/mock_table.cc
       util/fault_injection_test_env.cc
       utilities/cassandra/test_utils.cc
-  )
+          db/mytest.cpp)
   # test utilities are only build in debug
   enable_testing()
   add_custom_target(check COMMAND ${CMAKE_CTEST_COMMAND})

@@ -398,8 +398,6 @@ Status ReadRecordFromWriteBatch(Slice* input, char* tag,
 
 Status WriteBatch::Iterate(Handler* handler) const {
   Slice input(rep_);
-  std::cout<<"~~~~~~~~~~~~~~~~~~~~~~~~~~~~add by hao~~~~~~~~~~~~~~~"<<std::endl;
-  std::cout<<rep_<<std::endl;
   if (input.size() < WriteBatchInternal::kHeader) {
     return Status::Corruption("malformed WriteBatch (too small)");
   }
@@ -439,7 +437,8 @@ Status WriteBatch::Iterate(Handler* handler) const {
       last_was_try_again = true;
       s = Status::OK();
     }
-
+    std::cout<<"~~~~~~~~~~~~~~~~~~~~~~~~~~~~add by hao~~~~~~~~~~~~~~~"<<std::endl;
+    std::cout<<tag<<std::endl;
     switch (tag) {
       case kTypeColumnFamilyValue:
       case kTypeValue:

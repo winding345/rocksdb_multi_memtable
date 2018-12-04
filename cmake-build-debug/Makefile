@@ -160,17 +160,56 @@ rocksdb/fast:
 .PHONY : rocksdb/fast
 
 #=============================================================================
-# Target rules for targets named rocksdb_db_io_failure_test
+# Target rules for targets named rocksdb_db_tailing_iter_test
 
 # Build rule for target.
-rocksdb_db_io_failure_test: cmake_check_build_system
-	$(MAKE) -f CMakeFiles\Makefile2 rocksdb_db_io_failure_test
-.PHONY : rocksdb_db_io_failure_test
+rocksdb_db_tailing_iter_test: cmake_check_build_system
+	$(MAKE) -f CMakeFiles\Makefile2 rocksdb_db_tailing_iter_test
+.PHONY : rocksdb_db_tailing_iter_test
 
 # fast build rule for target.
-rocksdb_db_io_failure_test/fast:
-	$(MAKE) -f CMakeFiles\rocksdb_db_io_failure_test.dir\build.make CMakeFiles/rocksdb_db_io_failure_test.dir/build
-.PHONY : rocksdb_db_io_failure_test/fast
+rocksdb_db_tailing_iter_test/fast:
+	$(MAKE) -f CMakeFiles\rocksdb_db_tailing_iter_test.dir\build.make CMakeFiles/rocksdb_db_tailing_iter_test.dir/build
+.PHONY : rocksdb_db_tailing_iter_test/fast
+
+#=============================================================================
+# Target rules for targets named check
+
+# Build rule for target.
+check: cmake_check_build_system
+	$(MAKE) -f CMakeFiles\Makefile2 check
+.PHONY : check
+
+# fast build rule for target.
+check/fast:
+	$(MAKE) -f CMakeFiles\check.dir\build.make CMakeFiles/check.dir/build
+.PHONY : check/fast
+
+#=============================================================================
+# Target rules for targets named hash_table_bench
+
+# Build rule for target.
+hash_table_bench: cmake_check_build_system
+	$(MAKE) -f CMakeFiles\Makefile2 hash_table_bench
+.PHONY : hash_table_bench
+
+# fast build rule for target.
+hash_table_bench/fast:
+	$(MAKE) -f CMakeFiles\hash_table_bench.dir\build.make CMakeFiles/hash_table_bench.dir/build
+.PHONY : hash_table_bench/fast
+
+#=============================================================================
+# Target rules for targets named mytest
+
+# Build rule for target.
+mytest: cmake_check_build_system
+	$(MAKE) -f CMakeFiles\Makefile2 mytest
+.PHONY : mytest
+
+# fast build rule for target.
+mytest/fast:
+	$(MAKE) -f CMakeFiles\mytest.dir\build.make CMakeFiles/mytest.dir/build
+.PHONY : mytest/fast
 
 #=============================================================================
 # Target rules for targets named rocksdb_manual_compaction_test
@@ -184,6 +223,19 @@ rocksdb_manual_compaction_test: cmake_check_build_system
 rocksdb_manual_compaction_test/fast:
 	$(MAKE) -f CMakeFiles\rocksdb_manual_compaction_test.dir\build.make CMakeFiles/rocksdb_manual_compaction_test.dir/build
 .PHONY : rocksdb_manual_compaction_test/fast
+
+#=============================================================================
+# Target rules for targets named rocksdb_db_io_failure_test
+
+# Build rule for target.
+rocksdb_db_io_failure_test: cmake_check_build_system
+	$(MAKE) -f CMakeFiles\Makefile2 rocksdb_db_io_failure_test
+.PHONY : rocksdb_db_io_failure_test
+
+# fast build rule for target.
+rocksdb_db_io_failure_test/fast:
+	$(MAKE) -f CMakeFiles\rocksdb_db_io_failure_test.dir\build.make CMakeFiles/rocksdb_db_io_failure_test.dir/build
+.PHONY : rocksdb_db_io_failure_test/fast
 
 #=============================================================================
 # Target rules for targets named rocksdb-shared
@@ -303,6 +355,19 @@ rocksdb_lru_cache_test/fast:
 .PHONY : rocksdb_lru_cache_test/fast
 
 #=============================================================================
+# Target rules for targets named db_bench
+
+# Build rule for target.
+db_bench: cmake_check_build_system
+	$(MAKE) -f CMakeFiles\Makefile2 db_bench
+.PHONY : db_bench
+
+# fast build rule for target.
+db_bench/fast:
+	$(MAKE) -f CMakeFiles\db_bench.dir\build.make CMakeFiles/db_bench.dir/build
+.PHONY : db_bench/fast
+
+#=============================================================================
 # Target rules for targets named rocksdb_error_handler_test
 
 # Build rule for target.
@@ -394,19 +459,6 @@ table_reader_bench/fast:
 .PHONY : table_reader_bench/fast
 
 #=============================================================================
-# Target rules for targets named db_bench
-
-# Build rule for target.
-db_bench: cmake_check_build_system
-	$(MAKE) -f CMakeFiles\Makefile2 db_bench
-.PHONY : db_bench
-
-# fast build rule for target.
-db_bench/fast:
-	$(MAKE) -f CMakeFiles\db_bench.dir\build.make CMakeFiles/db_bench.dir/build
-.PHONY : db_bench/fast
-
-#=============================================================================
 # Target rules for targets named rocksdb_compact_files_test
 
 # Build rule for target.
@@ -431,45 +483,6 @@ column_aware_encoding_exp: cmake_check_build_system
 column_aware_encoding_exp/fast:
 	$(MAKE) -f CMakeFiles\column_aware_encoding_exp.dir\build.make CMakeFiles/column_aware_encoding_exp.dir/build
 .PHONY : column_aware_encoding_exp/fast
-
-#=============================================================================
-# Target rules for targets named rocksdb_db_tailing_iter_test
-
-# Build rule for target.
-rocksdb_db_tailing_iter_test: cmake_check_build_system
-	$(MAKE) -f CMakeFiles\Makefile2 rocksdb_db_tailing_iter_test
-.PHONY : rocksdb_db_tailing_iter_test
-
-# fast build rule for target.
-rocksdb_db_tailing_iter_test/fast:
-	$(MAKE) -f CMakeFiles\rocksdb_db_tailing_iter_test.dir\build.make CMakeFiles/rocksdb_db_tailing_iter_test.dir/build
-.PHONY : rocksdb_db_tailing_iter_test/fast
-
-#=============================================================================
-# Target rules for targets named check
-
-# Build rule for target.
-check: cmake_check_build_system
-	$(MAKE) -f CMakeFiles\Makefile2 check
-.PHONY : check
-
-# fast build rule for target.
-check/fast:
-	$(MAKE) -f CMakeFiles\check.dir\build.make CMakeFiles/check.dir/build
-.PHONY : check/fast
-
-#=============================================================================
-# Target rules for targets named hash_table_bench
-
-# Build rule for target.
-hash_table_bench: cmake_check_build_system
-	$(MAKE) -f CMakeFiles\Makefile2 hash_table_bench
-.PHONY : hash_table_bench
-
-# fast build rule for target.
-hash_table_bench/fast:
-	$(MAKE) -f CMakeFiles\hash_table_bench.dir\build.make CMakeFiles/hash_table_bench.dir/build
-.PHONY : hash_table_bench/fast
 
 #=============================================================================
 # Target rules for targets named testutillib
@@ -5103,6 +5116,36 @@ db/merge_test.s: db/merge_test.cc.s
 db/merge_test.cc.s:
 	$(MAKE) -f CMakeFiles\rocksdb_merge_test.dir\build.make CMakeFiles/rocksdb_merge_test.dir/db/merge_test.cc.s
 .PHONY : db/merge_test.cc.s
+
+db/mytest.obj: db/mytest.cpp.obj
+
+.PHONY : db/mytest.obj
+
+# target to build an object file
+db/mytest.cpp.obj:
+	$(MAKE) -f CMakeFiles\mytest.dir\build.make CMakeFiles/mytest.dir/db/mytest.cpp.obj
+	$(MAKE) -f CMakeFiles\testutillib.dir\build.make CMakeFiles/testutillib.dir/db/mytest.cpp.obj
+.PHONY : db/mytest.cpp.obj
+
+db/mytest.i: db/mytest.cpp.i
+
+.PHONY : db/mytest.i
+
+# target to preprocess a source file
+db/mytest.cpp.i:
+	$(MAKE) -f CMakeFiles\mytest.dir\build.make CMakeFiles/mytest.dir/db/mytest.cpp.i
+	$(MAKE) -f CMakeFiles\testutillib.dir\build.make CMakeFiles/testutillib.dir/db/mytest.cpp.i
+.PHONY : db/mytest.cpp.i
+
+db/mytest.s: db/mytest.cpp.s
+
+.PHONY : db/mytest.s
+
+# target to generate assembly for a file
+db/mytest.cpp.s:
+	$(MAKE) -f CMakeFiles\mytest.dir\build.make CMakeFiles/mytest.dir/db/mytest.cpp.s
+	$(MAKE) -f CMakeFiles\testutillib.dir\build.make CMakeFiles/testutillib.dir/db/mytest.cpp.s
+.PHONY : db/mytest.cpp.s
 
 db/obsolete_files_test.obj: db/obsolete_files_test.cc.obj
 
@@ -13309,8 +13352,12 @@ help:
 	@echo ... build_version
 	@echo ... testharness
 	@echo ... rocksdb
-	@echo ... rocksdb_db_io_failure_test
+	@echo ... rocksdb_db_tailing_iter_test
+	@echo ... check
+	@echo ... hash_table_bench
+	@echo ... mytest
 	@echo ... rocksdb_manual_compaction_test
+	@echo ... rocksdb_db_io_failure_test
 	@echo ... rocksdb-shared
 	@echo ... rocksdb_cassandra_serialize_test
 	@echo ... memtablerep_bench
@@ -13320,6 +13367,7 @@ help:
 	@echo ... range_del_aggregator_bench
 	@echo ... rocksdb_external_sst_file_basic_test
 	@echo ... rocksdb_lru_cache_test
+	@echo ... db_bench
 	@echo ... rocksdb_error_handler_test
 	@echo ... rocksdb_column_aware_encoding_test
 	@echo ... rocksdb_corruption_test
@@ -13327,12 +13375,8 @@ help:
 	@echo ... rocksdb_repair_test
 	@echo ... rocksdb_db_iter_test
 	@echo ... table_reader_bench
-	@echo ... db_bench
 	@echo ... rocksdb_compact_files_test
 	@echo ... column_aware_encoding_exp
-	@echo ... rocksdb_db_tailing_iter_test
-	@echo ... check
-	@echo ... hash_table_bench
 	@echo ... testutillib
 	@echo ... rocksdb_cache_test
 	@echo ... rocksdb_db_test2
@@ -13775,6 +13819,9 @@ help:
 	@echo ... db/merge_test.obj
 	@echo ... db/merge_test.i
 	@echo ... db/merge_test.s
+	@echo ... db/mytest.obj
+	@echo ... db/mytest.i
+	@echo ... db/mytest.s
 	@echo ... db/obsolete_files_test.obj
 	@echo ... db/obsolete_files_test.i
 	@echo ... db/obsolete_files_test.s

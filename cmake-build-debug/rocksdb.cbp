@@ -211,8 +211,8 @@
 					<DistClean command="D:/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/bin/mingw32-make.exe -f &quot;E:/project/KV_2018_10/sourcecode/rocksdb-master_12-03/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
-			<Target title="rocksdb_db_io_failure_test">
-				<Option output="E:/project/KV_2018_10/sourcecode/rocksdb-master_12-03/cmake-build-debug/db_io_failure_test.exe" prefix_auto="0" extension_auto="0"/>
+			<Target title="rocksdb_db_tailing_iter_test">
+				<Option output="E:/project/KV_2018_10/sourcecode/rocksdb-master_12-03/cmake-build-debug/db_tailing_iter_test.exe" prefix_auto="0" extension_auto="0"/>
 				<Option working_dir="E:/project/KV_2018_10/sourcecode/rocksdb-master_12-03/cmake-build-debug"/>
 				<Option object_output="./"/>
 				<Option type="1"/>
@@ -237,14 +237,14 @@
 					<Add directory="D:/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/bin/../lib/gcc/i686-w64-mingw32/8.1.0/../../../../i686-w64-mingw32/include"/>
 				</Compiler>
 				<MakeCommands>
-					<Build command="D:/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/bin/mingw32-make.exe -f &quot;E:/project/KV_2018_10/sourcecode/rocksdb-master_12-03/cmake-build-debug/Makefile&quot;  VERBOSE=1 rocksdb_db_io_failure_test"/>
+					<Build command="D:/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/bin/mingw32-make.exe -f &quot;E:/project/KV_2018_10/sourcecode/rocksdb-master_12-03/cmake-build-debug/Makefile&quot;  VERBOSE=1 rocksdb_db_tailing_iter_test"/>
 					<CompileFile command="D:/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/bin/mingw32-make.exe -f &quot;E:/project/KV_2018_10/sourcecode/rocksdb-master_12-03/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
 					<Clean command="D:/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/bin/mingw32-make.exe -f &quot;E:/project/KV_2018_10/sourcecode/rocksdb-master_12-03/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 					<DistClean command="D:/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/bin/mingw32-make.exe -f &quot;E:/project/KV_2018_10/sourcecode/rocksdb-master_12-03/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
-			<Target title="rocksdb_db_io_failure_test/fast">
-				<Option output="E:/project/KV_2018_10/sourcecode/rocksdb-master_12-03/cmake-build-debug/db_io_failure_test.exe" prefix_auto="0" extension_auto="0"/>
+			<Target title="rocksdb_db_tailing_iter_test/fast">
+				<Option output="E:/project/KV_2018_10/sourcecode/rocksdb-master_12-03/cmake-build-debug/db_tailing_iter_test.exe" prefix_auto="0" extension_auto="0"/>
 				<Option working_dir="E:/project/KV_2018_10/sourcecode/rocksdb-master_12-03/cmake-build-debug"/>
 				<Option object_output="./"/>
 				<Option type="1"/>
@@ -269,7 +269,145 @@
 					<Add directory="D:/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/bin/../lib/gcc/i686-w64-mingw32/8.1.0/../../../../i686-w64-mingw32/include"/>
 				</Compiler>
 				<MakeCommands>
-					<Build command="D:/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/bin/mingw32-make.exe -f &quot;E:/project/KV_2018_10/sourcecode/rocksdb-master_12-03/cmake-build-debug/Makefile&quot;  VERBOSE=1 rocksdb_db_io_failure_test/fast"/>
+					<Build command="D:/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/bin/mingw32-make.exe -f &quot;E:/project/KV_2018_10/sourcecode/rocksdb-master_12-03/cmake-build-debug/Makefile&quot;  VERBOSE=1 rocksdb_db_tailing_iter_test/fast"/>
+					<CompileFile command="D:/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/bin/mingw32-make.exe -f &quot;E:/project/KV_2018_10/sourcecode/rocksdb-master_12-03/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="D:/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/bin/mingw32-make.exe -f &quot;E:/project/KV_2018_10/sourcecode/rocksdb-master_12-03/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="D:/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/bin/mingw32-make.exe -f &quot;E:/project/KV_2018_10/sourcecode/rocksdb-master_12-03/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="check">
+				<Option working_dir="E:/project/KV_2018_10/sourcecode/rocksdb-master_12-03/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="D:/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/bin/mingw32-make.exe -f &quot;E:/project/KV_2018_10/sourcecode/rocksdb-master_12-03/cmake-build-debug/Makefile&quot;  VERBOSE=1 check"/>
+					<CompileFile command="D:/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/bin/mingw32-make.exe -f &quot;E:/project/KV_2018_10/sourcecode/rocksdb-master_12-03/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="D:/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/bin/mingw32-make.exe -f &quot;E:/project/KV_2018_10/sourcecode/rocksdb-master_12-03/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="D:/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/bin/mingw32-make.exe -f &quot;E:/project/KV_2018_10/sourcecode/rocksdb-master_12-03/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="hash_table_bench">
+				<Option output="E:/project/KV_2018_10/sourcecode/rocksdb-master_12-03/cmake-build-debug/hash_table_bench.exe" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="E:/project/KV_2018_10/sourcecode/rocksdb-master_12-03/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add option="-DROCKSDB_SUPPORT_THREAD_LOCAL"/>
+					<Add option="-DWIN32"/>
+					<Add option="-DOS_WIN"/>
+					<Add option="-D_MBCS"/>
+					<Add option="-DWIN64"/>
+					<Add option="-DNOMINMAX"/>
+					<Add option="-D_WIN32_WINNT=_WIN32_WINNT_VISTA"/>
+					<Add option="-DROCKSDB_PTHREAD_ADAPTIVE_MUTEX"/>
+					<Add directory="E:/project/KV_2018_10/sourcecode/rocksdb-master_12-03"/>
+					<Add directory="E:/project/KV_2018_10/sourcecode/rocksdb-master_12-03/include"/>
+					<Add directory="E:/project/KV_2018_10/sourcecode/rocksdb-master_12-03/third-party/gtest-1.7.0/fused-src"/>
+					<Add directory="D:/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/bin/../lib/gcc/i686-w64-mingw32/8.1.0/include/c++"/>
+					<Add directory="D:/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/bin/../lib/gcc/i686-w64-mingw32/8.1.0/include/c++/i686-w64-mingw32"/>
+					<Add directory="D:/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/bin/../lib/gcc/i686-w64-mingw32/8.1.0/include/c++/backward"/>
+					<Add directory="D:/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/bin/../lib/gcc/i686-w64-mingw32/8.1.0/include"/>
+					<Add directory="D:/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/bin/../lib/gcc/i686-w64-mingw32/8.1.0/include-fixed"/>
+					<Add directory="D:/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/bin/../lib/gcc/i686-w64-mingw32/8.1.0/../../../../i686-w64-mingw32/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="D:/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/bin/mingw32-make.exe -f &quot;E:/project/KV_2018_10/sourcecode/rocksdb-master_12-03/cmake-build-debug/Makefile&quot;  VERBOSE=1 hash_table_bench"/>
+					<CompileFile command="D:/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/bin/mingw32-make.exe -f &quot;E:/project/KV_2018_10/sourcecode/rocksdb-master_12-03/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="D:/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/bin/mingw32-make.exe -f &quot;E:/project/KV_2018_10/sourcecode/rocksdb-master_12-03/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="D:/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/bin/mingw32-make.exe -f &quot;E:/project/KV_2018_10/sourcecode/rocksdb-master_12-03/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="hash_table_bench/fast">
+				<Option output="E:/project/KV_2018_10/sourcecode/rocksdb-master_12-03/cmake-build-debug/hash_table_bench.exe" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="E:/project/KV_2018_10/sourcecode/rocksdb-master_12-03/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add option="-DROCKSDB_SUPPORT_THREAD_LOCAL"/>
+					<Add option="-DWIN32"/>
+					<Add option="-DOS_WIN"/>
+					<Add option="-D_MBCS"/>
+					<Add option="-DWIN64"/>
+					<Add option="-DNOMINMAX"/>
+					<Add option="-D_WIN32_WINNT=_WIN32_WINNT_VISTA"/>
+					<Add option="-DROCKSDB_PTHREAD_ADAPTIVE_MUTEX"/>
+					<Add directory="E:/project/KV_2018_10/sourcecode/rocksdb-master_12-03"/>
+					<Add directory="E:/project/KV_2018_10/sourcecode/rocksdb-master_12-03/include"/>
+					<Add directory="E:/project/KV_2018_10/sourcecode/rocksdb-master_12-03/third-party/gtest-1.7.0/fused-src"/>
+					<Add directory="D:/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/bin/../lib/gcc/i686-w64-mingw32/8.1.0/include/c++"/>
+					<Add directory="D:/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/bin/../lib/gcc/i686-w64-mingw32/8.1.0/include/c++/i686-w64-mingw32"/>
+					<Add directory="D:/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/bin/../lib/gcc/i686-w64-mingw32/8.1.0/include/c++/backward"/>
+					<Add directory="D:/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/bin/../lib/gcc/i686-w64-mingw32/8.1.0/include"/>
+					<Add directory="D:/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/bin/../lib/gcc/i686-w64-mingw32/8.1.0/include-fixed"/>
+					<Add directory="D:/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/bin/../lib/gcc/i686-w64-mingw32/8.1.0/../../../../i686-w64-mingw32/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="D:/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/bin/mingw32-make.exe -f &quot;E:/project/KV_2018_10/sourcecode/rocksdb-master_12-03/cmake-build-debug/Makefile&quot;  VERBOSE=1 hash_table_bench/fast"/>
+					<CompileFile command="D:/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/bin/mingw32-make.exe -f &quot;E:/project/KV_2018_10/sourcecode/rocksdb-master_12-03/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="D:/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/bin/mingw32-make.exe -f &quot;E:/project/KV_2018_10/sourcecode/rocksdb-master_12-03/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="D:/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/bin/mingw32-make.exe -f &quot;E:/project/KV_2018_10/sourcecode/rocksdb-master_12-03/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="mytest">
+				<Option output="E:/project/KV_2018_10/sourcecode/rocksdb-master_12-03/cmake-build-debug/mytest.exe" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="E:/project/KV_2018_10/sourcecode/rocksdb-master_12-03/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add option="-DROCKSDB_SUPPORT_THREAD_LOCAL"/>
+					<Add option="-DWIN32"/>
+					<Add option="-DOS_WIN"/>
+					<Add option="-D_MBCS"/>
+					<Add option="-DWIN64"/>
+					<Add option="-DNOMINMAX"/>
+					<Add option="-D_WIN32_WINNT=_WIN32_WINNT_VISTA"/>
+					<Add option="-DROCKSDB_PTHREAD_ADAPTIVE_MUTEX"/>
+					<Add directory="E:/project/KV_2018_10/sourcecode/rocksdb-master_12-03"/>
+					<Add directory="E:/project/KV_2018_10/sourcecode/rocksdb-master_12-03/include"/>
+					<Add directory="E:/project/KV_2018_10/sourcecode/rocksdb-master_12-03/third-party/gtest-1.7.0/fused-src"/>
+					<Add directory="D:/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/bin/../lib/gcc/i686-w64-mingw32/8.1.0/include/c++"/>
+					<Add directory="D:/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/bin/../lib/gcc/i686-w64-mingw32/8.1.0/include/c++/i686-w64-mingw32"/>
+					<Add directory="D:/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/bin/../lib/gcc/i686-w64-mingw32/8.1.0/include/c++/backward"/>
+					<Add directory="D:/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/bin/../lib/gcc/i686-w64-mingw32/8.1.0/include"/>
+					<Add directory="D:/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/bin/../lib/gcc/i686-w64-mingw32/8.1.0/include-fixed"/>
+					<Add directory="D:/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/bin/../lib/gcc/i686-w64-mingw32/8.1.0/../../../../i686-w64-mingw32/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="D:/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/bin/mingw32-make.exe -f &quot;E:/project/KV_2018_10/sourcecode/rocksdb-master_12-03/cmake-build-debug/Makefile&quot;  VERBOSE=1 mytest"/>
+					<CompileFile command="D:/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/bin/mingw32-make.exe -f &quot;E:/project/KV_2018_10/sourcecode/rocksdb-master_12-03/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="D:/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/bin/mingw32-make.exe -f &quot;E:/project/KV_2018_10/sourcecode/rocksdb-master_12-03/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="D:/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/bin/mingw32-make.exe -f &quot;E:/project/KV_2018_10/sourcecode/rocksdb-master_12-03/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="mytest/fast">
+				<Option output="E:/project/KV_2018_10/sourcecode/rocksdb-master_12-03/cmake-build-debug/mytest.exe" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="E:/project/KV_2018_10/sourcecode/rocksdb-master_12-03/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add option="-DROCKSDB_SUPPORT_THREAD_LOCAL"/>
+					<Add option="-DWIN32"/>
+					<Add option="-DOS_WIN"/>
+					<Add option="-D_MBCS"/>
+					<Add option="-DWIN64"/>
+					<Add option="-DNOMINMAX"/>
+					<Add option="-D_WIN32_WINNT=_WIN32_WINNT_VISTA"/>
+					<Add option="-DROCKSDB_PTHREAD_ADAPTIVE_MUTEX"/>
+					<Add directory="E:/project/KV_2018_10/sourcecode/rocksdb-master_12-03"/>
+					<Add directory="E:/project/KV_2018_10/sourcecode/rocksdb-master_12-03/include"/>
+					<Add directory="E:/project/KV_2018_10/sourcecode/rocksdb-master_12-03/third-party/gtest-1.7.0/fused-src"/>
+					<Add directory="D:/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/bin/../lib/gcc/i686-w64-mingw32/8.1.0/include/c++"/>
+					<Add directory="D:/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/bin/../lib/gcc/i686-w64-mingw32/8.1.0/include/c++/i686-w64-mingw32"/>
+					<Add directory="D:/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/bin/../lib/gcc/i686-w64-mingw32/8.1.0/include/c++/backward"/>
+					<Add directory="D:/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/bin/../lib/gcc/i686-w64-mingw32/8.1.0/include"/>
+					<Add directory="D:/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/bin/../lib/gcc/i686-w64-mingw32/8.1.0/include-fixed"/>
+					<Add directory="D:/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/bin/../lib/gcc/i686-w64-mingw32/8.1.0/../../../../i686-w64-mingw32/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="D:/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/bin/mingw32-make.exe -f &quot;E:/project/KV_2018_10/sourcecode/rocksdb-master_12-03/cmake-build-debug/Makefile&quot;  VERBOSE=1 mytest/fast"/>
 					<CompileFile command="D:/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/bin/mingw32-make.exe -f &quot;E:/project/KV_2018_10/sourcecode/rocksdb-master_12-03/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
 					<Clean command="D:/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/bin/mingw32-make.exe -f &quot;E:/project/KV_2018_10/sourcecode/rocksdb-master_12-03/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 					<DistClean command="D:/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/bin/mingw32-make.exe -f &quot;E:/project/KV_2018_10/sourcecode/rocksdb-master_12-03/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
@@ -334,6 +472,70 @@
 				</Compiler>
 				<MakeCommands>
 					<Build command="D:/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/bin/mingw32-make.exe -f &quot;E:/project/KV_2018_10/sourcecode/rocksdb-master_12-03/cmake-build-debug/Makefile&quot;  VERBOSE=1 rocksdb_manual_compaction_test/fast"/>
+					<CompileFile command="D:/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/bin/mingw32-make.exe -f &quot;E:/project/KV_2018_10/sourcecode/rocksdb-master_12-03/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="D:/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/bin/mingw32-make.exe -f &quot;E:/project/KV_2018_10/sourcecode/rocksdb-master_12-03/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="D:/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/bin/mingw32-make.exe -f &quot;E:/project/KV_2018_10/sourcecode/rocksdb-master_12-03/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="rocksdb_db_io_failure_test">
+				<Option output="E:/project/KV_2018_10/sourcecode/rocksdb-master_12-03/cmake-build-debug/db_io_failure_test.exe" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="E:/project/KV_2018_10/sourcecode/rocksdb-master_12-03/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add option="-DROCKSDB_SUPPORT_THREAD_LOCAL"/>
+					<Add option="-DWIN32"/>
+					<Add option="-DOS_WIN"/>
+					<Add option="-D_MBCS"/>
+					<Add option="-DWIN64"/>
+					<Add option="-DNOMINMAX"/>
+					<Add option="-D_WIN32_WINNT=_WIN32_WINNT_VISTA"/>
+					<Add option="-DROCKSDB_PTHREAD_ADAPTIVE_MUTEX"/>
+					<Add directory="E:/project/KV_2018_10/sourcecode/rocksdb-master_12-03"/>
+					<Add directory="E:/project/KV_2018_10/sourcecode/rocksdb-master_12-03/include"/>
+					<Add directory="E:/project/KV_2018_10/sourcecode/rocksdb-master_12-03/third-party/gtest-1.7.0/fused-src"/>
+					<Add directory="D:/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/bin/../lib/gcc/i686-w64-mingw32/8.1.0/include/c++"/>
+					<Add directory="D:/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/bin/../lib/gcc/i686-w64-mingw32/8.1.0/include/c++/i686-w64-mingw32"/>
+					<Add directory="D:/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/bin/../lib/gcc/i686-w64-mingw32/8.1.0/include/c++/backward"/>
+					<Add directory="D:/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/bin/../lib/gcc/i686-w64-mingw32/8.1.0/include"/>
+					<Add directory="D:/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/bin/../lib/gcc/i686-w64-mingw32/8.1.0/include-fixed"/>
+					<Add directory="D:/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/bin/../lib/gcc/i686-w64-mingw32/8.1.0/../../../../i686-w64-mingw32/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="D:/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/bin/mingw32-make.exe -f &quot;E:/project/KV_2018_10/sourcecode/rocksdb-master_12-03/cmake-build-debug/Makefile&quot;  VERBOSE=1 rocksdb_db_io_failure_test"/>
+					<CompileFile command="D:/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/bin/mingw32-make.exe -f &quot;E:/project/KV_2018_10/sourcecode/rocksdb-master_12-03/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="D:/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/bin/mingw32-make.exe -f &quot;E:/project/KV_2018_10/sourcecode/rocksdb-master_12-03/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="D:/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/bin/mingw32-make.exe -f &quot;E:/project/KV_2018_10/sourcecode/rocksdb-master_12-03/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="rocksdb_db_io_failure_test/fast">
+				<Option output="E:/project/KV_2018_10/sourcecode/rocksdb-master_12-03/cmake-build-debug/db_io_failure_test.exe" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="E:/project/KV_2018_10/sourcecode/rocksdb-master_12-03/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add option="-DROCKSDB_SUPPORT_THREAD_LOCAL"/>
+					<Add option="-DWIN32"/>
+					<Add option="-DOS_WIN"/>
+					<Add option="-D_MBCS"/>
+					<Add option="-DWIN64"/>
+					<Add option="-DNOMINMAX"/>
+					<Add option="-D_WIN32_WINNT=_WIN32_WINNT_VISTA"/>
+					<Add option="-DROCKSDB_PTHREAD_ADAPTIVE_MUTEX"/>
+					<Add directory="E:/project/KV_2018_10/sourcecode/rocksdb-master_12-03"/>
+					<Add directory="E:/project/KV_2018_10/sourcecode/rocksdb-master_12-03/include"/>
+					<Add directory="E:/project/KV_2018_10/sourcecode/rocksdb-master_12-03/third-party/gtest-1.7.0/fused-src"/>
+					<Add directory="D:/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/bin/../lib/gcc/i686-w64-mingw32/8.1.0/include/c++"/>
+					<Add directory="D:/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/bin/../lib/gcc/i686-w64-mingw32/8.1.0/include/c++/i686-w64-mingw32"/>
+					<Add directory="D:/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/bin/../lib/gcc/i686-w64-mingw32/8.1.0/include/c++/backward"/>
+					<Add directory="D:/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/bin/../lib/gcc/i686-w64-mingw32/8.1.0/include"/>
+					<Add directory="D:/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/bin/../lib/gcc/i686-w64-mingw32/8.1.0/include-fixed"/>
+					<Add directory="D:/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/bin/../lib/gcc/i686-w64-mingw32/8.1.0/../../../../i686-w64-mingw32/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="D:/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/bin/mingw32-make.exe -f &quot;E:/project/KV_2018_10/sourcecode/rocksdb-master_12-03/cmake-build-debug/Makefile&quot;  VERBOSE=1 rocksdb_db_io_failure_test/fast"/>
 					<CompileFile command="D:/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/bin/mingw32-make.exe -f &quot;E:/project/KV_2018_10/sourcecode/rocksdb-master_12-03/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
 					<Clean command="D:/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/bin/mingw32-make.exe -f &quot;E:/project/KV_2018_10/sourcecode/rocksdb-master_12-03/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 					<DistClean command="D:/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/bin/mingw32-make.exe -f &quot;E:/project/KV_2018_10/sourcecode/rocksdb-master_12-03/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
@@ -919,6 +1121,70 @@
 					<DistClean command="D:/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/bin/mingw32-make.exe -f &quot;E:/project/KV_2018_10/sourcecode/rocksdb-master_12-03/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
+			<Target title="db_bench">
+				<Option output="E:/project/KV_2018_10/sourcecode/rocksdb-master_12-03/cmake-build-debug/db_bench.exe" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="E:/project/KV_2018_10/sourcecode/rocksdb-master_12-03/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add option="-DROCKSDB_SUPPORT_THREAD_LOCAL"/>
+					<Add option="-DWIN32"/>
+					<Add option="-DOS_WIN"/>
+					<Add option="-D_MBCS"/>
+					<Add option="-DWIN64"/>
+					<Add option="-DNOMINMAX"/>
+					<Add option="-D_WIN32_WINNT=_WIN32_WINNT_VISTA"/>
+					<Add option="-DROCKSDB_PTHREAD_ADAPTIVE_MUTEX"/>
+					<Add directory="E:/project/KV_2018_10/sourcecode/rocksdb-master_12-03"/>
+					<Add directory="E:/project/KV_2018_10/sourcecode/rocksdb-master_12-03/include"/>
+					<Add directory="E:/project/KV_2018_10/sourcecode/rocksdb-master_12-03/third-party/gtest-1.7.0/fused-src"/>
+					<Add directory="D:/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/bin/../lib/gcc/i686-w64-mingw32/8.1.0/include/c++"/>
+					<Add directory="D:/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/bin/../lib/gcc/i686-w64-mingw32/8.1.0/include/c++/i686-w64-mingw32"/>
+					<Add directory="D:/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/bin/../lib/gcc/i686-w64-mingw32/8.1.0/include/c++/backward"/>
+					<Add directory="D:/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/bin/../lib/gcc/i686-w64-mingw32/8.1.0/include"/>
+					<Add directory="D:/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/bin/../lib/gcc/i686-w64-mingw32/8.1.0/include-fixed"/>
+					<Add directory="D:/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/bin/../lib/gcc/i686-w64-mingw32/8.1.0/../../../../i686-w64-mingw32/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="D:/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/bin/mingw32-make.exe -f &quot;E:/project/KV_2018_10/sourcecode/rocksdb-master_12-03/cmake-build-debug/Makefile&quot;  VERBOSE=1 db_bench"/>
+					<CompileFile command="D:/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/bin/mingw32-make.exe -f &quot;E:/project/KV_2018_10/sourcecode/rocksdb-master_12-03/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="D:/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/bin/mingw32-make.exe -f &quot;E:/project/KV_2018_10/sourcecode/rocksdb-master_12-03/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="D:/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/bin/mingw32-make.exe -f &quot;E:/project/KV_2018_10/sourcecode/rocksdb-master_12-03/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="db_bench/fast">
+				<Option output="E:/project/KV_2018_10/sourcecode/rocksdb-master_12-03/cmake-build-debug/db_bench.exe" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="E:/project/KV_2018_10/sourcecode/rocksdb-master_12-03/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add option="-DROCKSDB_SUPPORT_THREAD_LOCAL"/>
+					<Add option="-DWIN32"/>
+					<Add option="-DOS_WIN"/>
+					<Add option="-D_MBCS"/>
+					<Add option="-DWIN64"/>
+					<Add option="-DNOMINMAX"/>
+					<Add option="-D_WIN32_WINNT=_WIN32_WINNT_VISTA"/>
+					<Add option="-DROCKSDB_PTHREAD_ADAPTIVE_MUTEX"/>
+					<Add directory="E:/project/KV_2018_10/sourcecode/rocksdb-master_12-03"/>
+					<Add directory="E:/project/KV_2018_10/sourcecode/rocksdb-master_12-03/include"/>
+					<Add directory="E:/project/KV_2018_10/sourcecode/rocksdb-master_12-03/third-party/gtest-1.7.0/fused-src"/>
+					<Add directory="D:/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/bin/../lib/gcc/i686-w64-mingw32/8.1.0/include/c++"/>
+					<Add directory="D:/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/bin/../lib/gcc/i686-w64-mingw32/8.1.0/include/c++/i686-w64-mingw32"/>
+					<Add directory="D:/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/bin/../lib/gcc/i686-w64-mingw32/8.1.0/include/c++/backward"/>
+					<Add directory="D:/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/bin/../lib/gcc/i686-w64-mingw32/8.1.0/include"/>
+					<Add directory="D:/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/bin/../lib/gcc/i686-w64-mingw32/8.1.0/include-fixed"/>
+					<Add directory="D:/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/bin/../lib/gcc/i686-w64-mingw32/8.1.0/../../../../i686-w64-mingw32/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="D:/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/bin/mingw32-make.exe -f &quot;E:/project/KV_2018_10/sourcecode/rocksdb-master_12-03/cmake-build-debug/Makefile&quot;  VERBOSE=1 db_bench/fast"/>
+					<CompileFile command="D:/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/bin/mingw32-make.exe -f &quot;E:/project/KV_2018_10/sourcecode/rocksdb-master_12-03/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="D:/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/bin/mingw32-make.exe -f &quot;E:/project/KV_2018_10/sourcecode/rocksdb-master_12-03/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="D:/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/bin/mingw32-make.exe -f &quot;E:/project/KV_2018_10/sourcecode/rocksdb-master_12-03/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
 			<Target title="rocksdb_error_handler_test">
 				<Option output="E:/project/KV_2018_10/sourcecode/rocksdb-master_12-03/cmake-build-debug/error_handler_test.exe" prefix_auto="0" extension_auto="0"/>
 				<Option working_dir="E:/project/KV_2018_10/sourcecode/rocksdb-master_12-03/cmake-build-debug"/>
@@ -1367,70 +1633,6 @@
 					<DistClean command="D:/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/bin/mingw32-make.exe -f &quot;E:/project/KV_2018_10/sourcecode/rocksdb-master_12-03/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
-			<Target title="db_bench">
-				<Option output="E:/project/KV_2018_10/sourcecode/rocksdb-master_12-03/cmake-build-debug/db_bench.exe" prefix_auto="0" extension_auto="0"/>
-				<Option working_dir="E:/project/KV_2018_10/sourcecode/rocksdb-master_12-03/cmake-build-debug"/>
-				<Option object_output="./"/>
-				<Option type="1"/>
-				<Option compiler="gcc"/>
-				<Compiler>
-					<Add option="-DROCKSDB_SUPPORT_THREAD_LOCAL"/>
-					<Add option="-DWIN32"/>
-					<Add option="-DOS_WIN"/>
-					<Add option="-D_MBCS"/>
-					<Add option="-DWIN64"/>
-					<Add option="-DNOMINMAX"/>
-					<Add option="-D_WIN32_WINNT=_WIN32_WINNT_VISTA"/>
-					<Add option="-DROCKSDB_PTHREAD_ADAPTIVE_MUTEX"/>
-					<Add directory="E:/project/KV_2018_10/sourcecode/rocksdb-master_12-03"/>
-					<Add directory="E:/project/KV_2018_10/sourcecode/rocksdb-master_12-03/include"/>
-					<Add directory="E:/project/KV_2018_10/sourcecode/rocksdb-master_12-03/third-party/gtest-1.7.0/fused-src"/>
-					<Add directory="D:/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/bin/../lib/gcc/i686-w64-mingw32/8.1.0/include/c++"/>
-					<Add directory="D:/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/bin/../lib/gcc/i686-w64-mingw32/8.1.0/include/c++/i686-w64-mingw32"/>
-					<Add directory="D:/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/bin/../lib/gcc/i686-w64-mingw32/8.1.0/include/c++/backward"/>
-					<Add directory="D:/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/bin/../lib/gcc/i686-w64-mingw32/8.1.0/include"/>
-					<Add directory="D:/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/bin/../lib/gcc/i686-w64-mingw32/8.1.0/include-fixed"/>
-					<Add directory="D:/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/bin/../lib/gcc/i686-w64-mingw32/8.1.0/../../../../i686-w64-mingw32/include"/>
-				</Compiler>
-				<MakeCommands>
-					<Build command="D:/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/bin/mingw32-make.exe -f &quot;E:/project/KV_2018_10/sourcecode/rocksdb-master_12-03/cmake-build-debug/Makefile&quot;  VERBOSE=1 db_bench"/>
-					<CompileFile command="D:/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/bin/mingw32-make.exe -f &quot;E:/project/KV_2018_10/sourcecode/rocksdb-master_12-03/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="D:/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/bin/mingw32-make.exe -f &quot;E:/project/KV_2018_10/sourcecode/rocksdb-master_12-03/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="D:/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/bin/mingw32-make.exe -f &quot;E:/project/KV_2018_10/sourcecode/rocksdb-master_12-03/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-				</MakeCommands>
-			</Target>
-			<Target title="db_bench/fast">
-				<Option output="E:/project/KV_2018_10/sourcecode/rocksdb-master_12-03/cmake-build-debug/db_bench.exe" prefix_auto="0" extension_auto="0"/>
-				<Option working_dir="E:/project/KV_2018_10/sourcecode/rocksdb-master_12-03/cmake-build-debug"/>
-				<Option object_output="./"/>
-				<Option type="1"/>
-				<Option compiler="gcc"/>
-				<Compiler>
-					<Add option="-DROCKSDB_SUPPORT_THREAD_LOCAL"/>
-					<Add option="-DWIN32"/>
-					<Add option="-DOS_WIN"/>
-					<Add option="-D_MBCS"/>
-					<Add option="-DWIN64"/>
-					<Add option="-DNOMINMAX"/>
-					<Add option="-D_WIN32_WINNT=_WIN32_WINNT_VISTA"/>
-					<Add option="-DROCKSDB_PTHREAD_ADAPTIVE_MUTEX"/>
-					<Add directory="E:/project/KV_2018_10/sourcecode/rocksdb-master_12-03"/>
-					<Add directory="E:/project/KV_2018_10/sourcecode/rocksdb-master_12-03/include"/>
-					<Add directory="E:/project/KV_2018_10/sourcecode/rocksdb-master_12-03/third-party/gtest-1.7.0/fused-src"/>
-					<Add directory="D:/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/bin/../lib/gcc/i686-w64-mingw32/8.1.0/include/c++"/>
-					<Add directory="D:/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/bin/../lib/gcc/i686-w64-mingw32/8.1.0/include/c++/i686-w64-mingw32"/>
-					<Add directory="D:/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/bin/../lib/gcc/i686-w64-mingw32/8.1.0/include/c++/backward"/>
-					<Add directory="D:/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/bin/../lib/gcc/i686-w64-mingw32/8.1.0/include"/>
-					<Add directory="D:/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/bin/../lib/gcc/i686-w64-mingw32/8.1.0/include-fixed"/>
-					<Add directory="D:/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/bin/../lib/gcc/i686-w64-mingw32/8.1.0/../../../../i686-w64-mingw32/include"/>
-				</Compiler>
-				<MakeCommands>
-					<Build command="D:/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/bin/mingw32-make.exe -f &quot;E:/project/KV_2018_10/sourcecode/rocksdb-master_12-03/cmake-build-debug/Makefile&quot;  VERBOSE=1 db_bench/fast"/>
-					<CompileFile command="D:/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/bin/mingw32-make.exe -f &quot;E:/project/KV_2018_10/sourcecode/rocksdb-master_12-03/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="D:/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/bin/mingw32-make.exe -f &quot;E:/project/KV_2018_10/sourcecode/rocksdb-master_12-03/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="D:/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/bin/mingw32-make.exe -f &quot;E:/project/KV_2018_10/sourcecode/rocksdb-master_12-03/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-				</MakeCommands>
-			</Target>
 			<Target title="rocksdb_compact_files_test">
 				<Option output="E:/project/KV_2018_10/sourcecode/rocksdb-master_12-03/cmake-build-debug/compact_files_test.exe" prefix_auto="0" extension_auto="0"/>
 				<Option working_dir="E:/project/KV_2018_10/sourcecode/rocksdb-master_12-03/cmake-build-debug"/>
@@ -1554,144 +1756,6 @@
 				</Compiler>
 				<MakeCommands>
 					<Build command="D:/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/bin/mingw32-make.exe -f &quot;E:/project/KV_2018_10/sourcecode/rocksdb-master_12-03/cmake-build-debug/Makefile&quot;  VERBOSE=1 column_aware_encoding_exp/fast"/>
-					<CompileFile command="D:/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/bin/mingw32-make.exe -f &quot;E:/project/KV_2018_10/sourcecode/rocksdb-master_12-03/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="D:/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/bin/mingw32-make.exe -f &quot;E:/project/KV_2018_10/sourcecode/rocksdb-master_12-03/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="D:/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/bin/mingw32-make.exe -f &quot;E:/project/KV_2018_10/sourcecode/rocksdb-master_12-03/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-				</MakeCommands>
-			</Target>
-			<Target title="rocksdb_db_tailing_iter_test">
-				<Option output="E:/project/KV_2018_10/sourcecode/rocksdb-master_12-03/cmake-build-debug/db_tailing_iter_test.exe" prefix_auto="0" extension_auto="0"/>
-				<Option working_dir="E:/project/KV_2018_10/sourcecode/rocksdb-master_12-03/cmake-build-debug"/>
-				<Option object_output="./"/>
-				<Option type="1"/>
-				<Option compiler="gcc"/>
-				<Compiler>
-					<Add option="-DROCKSDB_SUPPORT_THREAD_LOCAL"/>
-					<Add option="-DWIN32"/>
-					<Add option="-DOS_WIN"/>
-					<Add option="-D_MBCS"/>
-					<Add option="-DWIN64"/>
-					<Add option="-DNOMINMAX"/>
-					<Add option="-D_WIN32_WINNT=_WIN32_WINNT_VISTA"/>
-					<Add option="-DROCKSDB_PTHREAD_ADAPTIVE_MUTEX"/>
-					<Add directory="E:/project/KV_2018_10/sourcecode/rocksdb-master_12-03"/>
-					<Add directory="E:/project/KV_2018_10/sourcecode/rocksdb-master_12-03/include"/>
-					<Add directory="E:/project/KV_2018_10/sourcecode/rocksdb-master_12-03/third-party/gtest-1.7.0/fused-src"/>
-					<Add directory="D:/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/bin/../lib/gcc/i686-w64-mingw32/8.1.0/include/c++"/>
-					<Add directory="D:/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/bin/../lib/gcc/i686-w64-mingw32/8.1.0/include/c++/i686-w64-mingw32"/>
-					<Add directory="D:/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/bin/../lib/gcc/i686-w64-mingw32/8.1.0/include/c++/backward"/>
-					<Add directory="D:/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/bin/../lib/gcc/i686-w64-mingw32/8.1.0/include"/>
-					<Add directory="D:/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/bin/../lib/gcc/i686-w64-mingw32/8.1.0/include-fixed"/>
-					<Add directory="D:/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/bin/../lib/gcc/i686-w64-mingw32/8.1.0/../../../../i686-w64-mingw32/include"/>
-				</Compiler>
-				<MakeCommands>
-					<Build command="D:/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/bin/mingw32-make.exe -f &quot;E:/project/KV_2018_10/sourcecode/rocksdb-master_12-03/cmake-build-debug/Makefile&quot;  VERBOSE=1 rocksdb_db_tailing_iter_test"/>
-					<CompileFile command="D:/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/bin/mingw32-make.exe -f &quot;E:/project/KV_2018_10/sourcecode/rocksdb-master_12-03/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="D:/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/bin/mingw32-make.exe -f &quot;E:/project/KV_2018_10/sourcecode/rocksdb-master_12-03/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="D:/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/bin/mingw32-make.exe -f &quot;E:/project/KV_2018_10/sourcecode/rocksdb-master_12-03/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-				</MakeCommands>
-			</Target>
-			<Target title="rocksdb_db_tailing_iter_test/fast">
-				<Option output="E:/project/KV_2018_10/sourcecode/rocksdb-master_12-03/cmake-build-debug/db_tailing_iter_test.exe" prefix_auto="0" extension_auto="0"/>
-				<Option working_dir="E:/project/KV_2018_10/sourcecode/rocksdb-master_12-03/cmake-build-debug"/>
-				<Option object_output="./"/>
-				<Option type="1"/>
-				<Option compiler="gcc"/>
-				<Compiler>
-					<Add option="-DROCKSDB_SUPPORT_THREAD_LOCAL"/>
-					<Add option="-DWIN32"/>
-					<Add option="-DOS_WIN"/>
-					<Add option="-D_MBCS"/>
-					<Add option="-DWIN64"/>
-					<Add option="-DNOMINMAX"/>
-					<Add option="-D_WIN32_WINNT=_WIN32_WINNT_VISTA"/>
-					<Add option="-DROCKSDB_PTHREAD_ADAPTIVE_MUTEX"/>
-					<Add directory="E:/project/KV_2018_10/sourcecode/rocksdb-master_12-03"/>
-					<Add directory="E:/project/KV_2018_10/sourcecode/rocksdb-master_12-03/include"/>
-					<Add directory="E:/project/KV_2018_10/sourcecode/rocksdb-master_12-03/third-party/gtest-1.7.0/fused-src"/>
-					<Add directory="D:/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/bin/../lib/gcc/i686-w64-mingw32/8.1.0/include/c++"/>
-					<Add directory="D:/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/bin/../lib/gcc/i686-w64-mingw32/8.1.0/include/c++/i686-w64-mingw32"/>
-					<Add directory="D:/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/bin/../lib/gcc/i686-w64-mingw32/8.1.0/include/c++/backward"/>
-					<Add directory="D:/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/bin/../lib/gcc/i686-w64-mingw32/8.1.0/include"/>
-					<Add directory="D:/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/bin/../lib/gcc/i686-w64-mingw32/8.1.0/include-fixed"/>
-					<Add directory="D:/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/bin/../lib/gcc/i686-w64-mingw32/8.1.0/../../../../i686-w64-mingw32/include"/>
-				</Compiler>
-				<MakeCommands>
-					<Build command="D:/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/bin/mingw32-make.exe -f &quot;E:/project/KV_2018_10/sourcecode/rocksdb-master_12-03/cmake-build-debug/Makefile&quot;  VERBOSE=1 rocksdb_db_tailing_iter_test/fast"/>
-					<CompileFile command="D:/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/bin/mingw32-make.exe -f &quot;E:/project/KV_2018_10/sourcecode/rocksdb-master_12-03/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="D:/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/bin/mingw32-make.exe -f &quot;E:/project/KV_2018_10/sourcecode/rocksdb-master_12-03/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="D:/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/bin/mingw32-make.exe -f &quot;E:/project/KV_2018_10/sourcecode/rocksdb-master_12-03/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-				</MakeCommands>
-			</Target>
-			<Target title="check">
-				<Option working_dir="E:/project/KV_2018_10/sourcecode/rocksdb-master_12-03/cmake-build-debug"/>
-				<Option type="4"/>
-				<MakeCommands>
-					<Build command="D:/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/bin/mingw32-make.exe -f &quot;E:/project/KV_2018_10/sourcecode/rocksdb-master_12-03/cmake-build-debug/Makefile&quot;  VERBOSE=1 check"/>
-					<CompileFile command="D:/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/bin/mingw32-make.exe -f &quot;E:/project/KV_2018_10/sourcecode/rocksdb-master_12-03/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="D:/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/bin/mingw32-make.exe -f &quot;E:/project/KV_2018_10/sourcecode/rocksdb-master_12-03/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="D:/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/bin/mingw32-make.exe -f &quot;E:/project/KV_2018_10/sourcecode/rocksdb-master_12-03/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-				</MakeCommands>
-			</Target>
-			<Target title="hash_table_bench">
-				<Option output="E:/project/KV_2018_10/sourcecode/rocksdb-master_12-03/cmake-build-debug/hash_table_bench.exe" prefix_auto="0" extension_auto="0"/>
-				<Option working_dir="E:/project/KV_2018_10/sourcecode/rocksdb-master_12-03/cmake-build-debug"/>
-				<Option object_output="./"/>
-				<Option type="1"/>
-				<Option compiler="gcc"/>
-				<Compiler>
-					<Add option="-DROCKSDB_SUPPORT_THREAD_LOCAL"/>
-					<Add option="-DWIN32"/>
-					<Add option="-DOS_WIN"/>
-					<Add option="-D_MBCS"/>
-					<Add option="-DWIN64"/>
-					<Add option="-DNOMINMAX"/>
-					<Add option="-D_WIN32_WINNT=_WIN32_WINNT_VISTA"/>
-					<Add option="-DROCKSDB_PTHREAD_ADAPTIVE_MUTEX"/>
-					<Add directory="E:/project/KV_2018_10/sourcecode/rocksdb-master_12-03"/>
-					<Add directory="E:/project/KV_2018_10/sourcecode/rocksdb-master_12-03/include"/>
-					<Add directory="E:/project/KV_2018_10/sourcecode/rocksdb-master_12-03/third-party/gtest-1.7.0/fused-src"/>
-					<Add directory="D:/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/bin/../lib/gcc/i686-w64-mingw32/8.1.0/include/c++"/>
-					<Add directory="D:/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/bin/../lib/gcc/i686-w64-mingw32/8.1.0/include/c++/i686-w64-mingw32"/>
-					<Add directory="D:/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/bin/../lib/gcc/i686-w64-mingw32/8.1.0/include/c++/backward"/>
-					<Add directory="D:/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/bin/../lib/gcc/i686-w64-mingw32/8.1.0/include"/>
-					<Add directory="D:/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/bin/../lib/gcc/i686-w64-mingw32/8.1.0/include-fixed"/>
-					<Add directory="D:/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/bin/../lib/gcc/i686-w64-mingw32/8.1.0/../../../../i686-w64-mingw32/include"/>
-				</Compiler>
-				<MakeCommands>
-					<Build command="D:/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/bin/mingw32-make.exe -f &quot;E:/project/KV_2018_10/sourcecode/rocksdb-master_12-03/cmake-build-debug/Makefile&quot;  VERBOSE=1 hash_table_bench"/>
-					<CompileFile command="D:/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/bin/mingw32-make.exe -f &quot;E:/project/KV_2018_10/sourcecode/rocksdb-master_12-03/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="D:/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/bin/mingw32-make.exe -f &quot;E:/project/KV_2018_10/sourcecode/rocksdb-master_12-03/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="D:/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/bin/mingw32-make.exe -f &quot;E:/project/KV_2018_10/sourcecode/rocksdb-master_12-03/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-				</MakeCommands>
-			</Target>
-			<Target title="hash_table_bench/fast">
-				<Option output="E:/project/KV_2018_10/sourcecode/rocksdb-master_12-03/cmake-build-debug/hash_table_bench.exe" prefix_auto="0" extension_auto="0"/>
-				<Option working_dir="E:/project/KV_2018_10/sourcecode/rocksdb-master_12-03/cmake-build-debug"/>
-				<Option object_output="./"/>
-				<Option type="1"/>
-				<Option compiler="gcc"/>
-				<Compiler>
-					<Add option="-DROCKSDB_SUPPORT_THREAD_LOCAL"/>
-					<Add option="-DWIN32"/>
-					<Add option="-DOS_WIN"/>
-					<Add option="-D_MBCS"/>
-					<Add option="-DWIN64"/>
-					<Add option="-DNOMINMAX"/>
-					<Add option="-D_WIN32_WINNT=_WIN32_WINNT_VISTA"/>
-					<Add option="-DROCKSDB_PTHREAD_ADAPTIVE_MUTEX"/>
-					<Add directory="E:/project/KV_2018_10/sourcecode/rocksdb-master_12-03"/>
-					<Add directory="E:/project/KV_2018_10/sourcecode/rocksdb-master_12-03/include"/>
-					<Add directory="E:/project/KV_2018_10/sourcecode/rocksdb-master_12-03/third-party/gtest-1.7.0/fused-src"/>
-					<Add directory="D:/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/bin/../lib/gcc/i686-w64-mingw32/8.1.0/include/c++"/>
-					<Add directory="D:/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/bin/../lib/gcc/i686-w64-mingw32/8.1.0/include/c++/i686-w64-mingw32"/>
-					<Add directory="D:/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/bin/../lib/gcc/i686-w64-mingw32/8.1.0/include/c++/backward"/>
-					<Add directory="D:/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/bin/../lib/gcc/i686-w64-mingw32/8.1.0/include"/>
-					<Add directory="D:/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/bin/../lib/gcc/i686-w64-mingw32/8.1.0/include-fixed"/>
-					<Add directory="D:/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/bin/../lib/gcc/i686-w64-mingw32/8.1.0/../../../../i686-w64-mingw32/include"/>
-				</Compiler>
-				<MakeCommands>
-					<Build command="D:/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/bin/mingw32-make.exe -f &quot;E:/project/KV_2018_10/sourcecode/rocksdb-master_12-03/cmake-build-debug/Makefile&quot;  VERBOSE=1 hash_table_bench/fast"/>
 					<CompileFile command="D:/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/bin/mingw32-make.exe -f &quot;E:/project/KV_2018_10/sourcecode/rocksdb-master_12-03/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
 					<Clean command="D:/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/bin/mingw32-make.exe -f &quot;E:/project/KV_2018_10/sourcecode/rocksdb-master_12-03/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 					<DistClean command="D:/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/bin/mingw32-make.exe -f &quot;E:/project/KV_2018_10/sourcecode/rocksdb-master_12-03/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
@@ -10554,8 +10618,11 @@
 			<Option target="rocksdb-shared"/>
 		</Unit>
 		<Unit filename="E:/project/KV_2018_10/sourcecode/rocksdb-master_12-03/cmake-build-debug/CMakeFiles/testharness.dir/util/testharness.cc.obj">
-			<Option target="rocksdb_db_io_failure_test"/>
+			<Option target="rocksdb_db_tailing_iter_test"/>
+			<Option target="hash_table_bench"/>
+			<Option target="mytest"/>
 			<Option target="rocksdb_manual_compaction_test"/>
+			<Option target="rocksdb_db_io_failure_test"/>
 			<Option target="rocksdb_cassandra_serialize_test"/>
 			<Option target="memtablerep_bench"/>
 			<Option target="rocksdb_db_blob_index_test"/>
@@ -10564,6 +10631,7 @@
 			<Option target="range_del_aggregator_bench"/>
 			<Option target="rocksdb_external_sst_file_basic_test"/>
 			<Option target="rocksdb_lru_cache_test"/>
+			<Option target="db_bench"/>
 			<Option target="rocksdb_error_handler_test"/>
 			<Option target="rocksdb_column_aware_encoding_test"/>
 			<Option target="rocksdb_corruption_test"/>
@@ -10571,11 +10639,8 @@
 			<Option target="rocksdb_repair_test"/>
 			<Option target="rocksdb_db_iter_test"/>
 			<Option target="table_reader_bench"/>
-			<Option target="db_bench"/>
 			<Option target="rocksdb_compact_files_test"/>
 			<Option target="column_aware_encoding_exp"/>
-			<Option target="rocksdb_db_tailing_iter_test"/>
-			<Option target="hash_table_bench"/>
 			<Option target="rocksdb_cache_test"/>
 			<Option target="rocksdb_db_test2"/>
 			<Option target="rocksdb_column_family_test"/>
@@ -11138,6 +11203,10 @@
 		</Unit>
 		<Unit filename="E:/project/KV_2018_10/sourcecode/rocksdb-master_12-03/db/merge_test.cc">
 			<Option target="rocksdb_merge_test"/>
+		</Unit>
+		<Unit filename="E:/project/KV_2018_10/sourcecode/rocksdb-master_12-03/db/mytest.cpp">
+			<Option target="mytest"/>
+			<Option target="testutillib"/>
 		</Unit>
 		<Unit filename="E:/project/KV_2018_10/sourcecode/rocksdb-master_12-03/db/obsolete_files_test.cc">
 			<Option target="rocksdb_obsolete_files_test"/>
