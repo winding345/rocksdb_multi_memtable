@@ -40,7 +40,7 @@
 #include <stdexcept>
 #include <type_traits>
 #include <vector>
-
+#include <iostream>
 #include "db/column_family.h"
 #include "db/db_impl.h"
 #include "db/dbformat.h"
