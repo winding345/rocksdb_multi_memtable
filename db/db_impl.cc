@@ -1182,7 +1182,7 @@ Status DBImpl::GetImpl(const ReadOptions& read_options,
                        ColumnFamilyHandle* column_family, const Slice& key,
                        PinnableSlice* pinnable_val, bool* value_found,
                        ReadCallback* callback, bool* is_blob_index) {
-  assert(pinnable_val != nullpptr);
+  assert(pinnable_val != nullptr);
   StopWatch sw(env_, stats_, DB_GET);
   PERF_TIMER_GUARD(get_snapshot_time);
 
