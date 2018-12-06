@@ -53,6 +53,11 @@ class ColumnFamilyMemTablesDefault : public ColumnFamilyMemTables {
     return mem_;
   }
 
+  MemTable* GetMymemTable(int index) const override {
+      assert(ok_);
+      return mem_;
+  }
+
   ColumnFamilyHandle* GetColumnFamilyHandle() override { return nullptr; }
 
  private:
