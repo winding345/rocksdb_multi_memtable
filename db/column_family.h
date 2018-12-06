@@ -269,7 +269,7 @@ class ColumnFamilyData {
   void CreateNewMemtable(const MutableCFOptions& mutable_cf_options,
                          SequenceNumber earliest_seq);
 
-  void CreateNewMyemtable(const MutableCFOptions& mutable_cf_options,
+  void CreateNewMymemtable(const MutableCFOptions& mutable_cf_options,
                                SequenceNumber earliest_seq);
 
   TableCache* table_cache() const { return table_cache_.get(); }
