@@ -1370,6 +1370,11 @@ MemTable* ColumnFamilyMemTablesImpl::GetMemTable() const {
   return current_->mem();
 }
 
+MemTable* ColumnFamilyMemTablesImpl::GetMymemTable(int index) const {
+    assert(current_ != nullptr);
+    return current_->mymem(index);
+}
+
 ColumnFamilyHandle* ColumnFamilyMemTablesImpl::GetColumnFamilyHandle() {
   assert(current_ != nullptr);
   return &handle_;
