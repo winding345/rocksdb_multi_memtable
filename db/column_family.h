@@ -26,6 +26,10 @@
 #include "rocksdb/options.h"
 #include "util/thread_local.h"
 
+#ifndef MYMEM_SIZE
+#define MYMEM_SIZE 100
+#endif
+
 namespace rocksdb {
 
 class Version;
@@ -92,6 +96,7 @@ struct SuperVersion {
   // Accessing members of this class is not thread-safe and requires external
   // synchronization (ie db mutex held or on write thread).
   MemTable* mem;
+  MemTable* mymem[MYMEM_SIZE];
   MemTableListVersion* imm;
   Version* current;
   MutableCFOptions mutable_cf_options;
@@ -242,6 +247,7 @@ class ColumnFamilyData {
 
   MemTableList* imm() { return &imm_; }
   MemTable* mem() { return mem_; }
+  MemTable* mymem(int index) {return mymem_[index];}
   Version* current() { return current_; }
   Version* dummy_versions() { return dummy_versions_; }
   void SetCurrent(Version* _current);
@@ -262,6 +268,9 @@ class ColumnFamilyData {
                                  SequenceNumber earliest_seq);
   void CreateNewMemtable(const MutableCFOptions& mutable_cf_options,
                          SequenceNumber earliest_seq);
+
+  void CreateNewMyemtable(const MutableCFOptions& mutable_cf_options,
+                               SequenceNumber earliest_seq);
 
   TableCache* table_cache() const { return table_cache_.get(); }
 
@@ -419,6 +428,7 @@ class ColumnFamilyData {
   WriteBufferManager* write_buffer_manager_;
 
   MemTable* mem_;
+  MemTable* mymem_[MYMEM_SIZE];
   MemTableList imm_;
   SuperVersion* super_version_;
 

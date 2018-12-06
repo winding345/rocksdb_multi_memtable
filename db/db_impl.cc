@@ -238,7 +238,7 @@ DBImpl::DBImpl(const DBOptions& options, const std::string& dbname,
                                  &write_controller_));
   column_family_memtables_.reset(
       new ColumnFamilyMemTablesImpl(versions_->GetColumnFamilySet()));
-
+  printf("size %d\n",versions_->GetColumnFamilySet()->column_family_data_.size());
   DumpRocksDBBuildVersion(immutable_db_options_.info_log.get());
   DumpDBFileSummary(immutable_db_options_, dbname_);
   immutable_db_options_.Dump(immutable_db_options_.info_log.get());

@@ -438,7 +438,7 @@ Status WriteBatch::Iterate(Handler* handler) const {
       s = Status::OK();
     }
     std::cout<<"~~~~~~~~~~~~~~~~~~~~~~~~~~~~add by hao~~~~~~~~~~~~~~~"<<std::endl;
-    std::cout<<tag<<std::endl;
+    std::cout<<(int)tag<<std::endl;
     switch (tag) {
       case kTypeColumnFamilyValue:
       case kTypeValue:
@@ -1244,6 +1244,7 @@ class MemTableInserter : public WriteBatch::Handler {
     auto* moptions = mem->GetImmutableMemTableOptions();
     // inplace_update_support is inconsistent with snapshots, and therefore with
     // any kind of transactions including the ones that use seq_per_batch
+    std::cout<<!seq_per_batch_<<!moptions->inplace_update_support<<std::endl;
     assert(!seq_per_batch_ || !moptions->inplace_update_support);
     if (!moptions->inplace_update_support) {
       bool mem_res =

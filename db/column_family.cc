@@ -433,7 +433,11 @@ ColumnFamilyData::ColumnFamilyData(
       allow_2pc_(db_options.allow_2pc),
       last_memtable_id_(0) {
   Ref();
-
+  //初始化mymem
+  for(int i = 0;i < 100;++i)
+  {
+    mymem_[i] = nullptr;
+  }
   // Convert user defined table properties collector factories to internal ones.
   GetIntTblPropCollectorFactory(ioptions_, &int_tbl_prop_collector_factories_);
 
@@ -907,6 +911,21 @@ void ColumnFamilyData::CreateNewMemtable(
   }
   SetMemtable(ConstructNewMemtable(mutable_cf_options, earliest_seq));
   mem_->Ref();
+}
+
+void ColumnFamilyData::CreateNewMymemtable(
+     const MutableCFOptions& mutable_cf_options, SequenceNumber earliest_seq) {
+  for(int i = 0;i < MYMEM_SIZE;++i)
+  {
+    if (mymem_[i] != nullptr) {
+      delete mymem_[i]->Unref();
+    }
+    uint64_t memtable_id = last_memtable_id_.fetch_add(1) + 1;
+    mymem_[i] = ConstructNewMemtable(mutable_cf_options, earliest_seq);
+    mymem_[i]->SetID(memtable_id);
+    mymem_[i]->Ref();
+    assert(mymem_[i] != nullptr);
+  }
 }
 
 bool ColumnFamilyData::NeedsCompaction() const {

@@ -473,6 +473,8 @@ Status DBImpl::Recover(
         for (auto cfd : *versions_->GetColumnFamilySet()) {
           cfd->CreateNewMemtable(*cfd->GetLatestMutableCFOptions(),
                                  kMaxSequenceNumber);
+          cfd->CreateNewMymemtable(*cfd->GetLatestMutableCFOptions(),
+                                   kMaxSequenceNumber);
         }
       }
     }
