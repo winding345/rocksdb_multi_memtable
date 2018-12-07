@@ -119,7 +119,7 @@ struct SuperVersion {
   // that needs to be deleted in to_delete vector. Unrefing those
   // objects needs to be done in the mutex
   void Cleanup();
-  void Init(MemTable* new_mem, MemTableListVersion* new_imm,
+  void Init(MemTable* new_mem, MemTable* new_mymem[], MemTableListVersion* new_imm,
             Version* new_current);
 
   // The value of dummy is not actually used. kSVInUse takes its address as a

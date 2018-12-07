@@ -369,10 +369,15 @@ void SuperVersion::Cleanup() {
   current->Unref();
 }
 
-void SuperVersion::Init(MemTable* new_mem, MemTableListVersion* new_imm,
+void SuperVersion::Init(MemTable* new_mem, MemTable* new_mymem[], MemTableListVersion* new_imm,
                         Version* new_current) {
   mem = new_mem;
   imm = new_imm;
+  for(int i = 0;i < MYMEM_SIZE;++i)
+  {
+      mymem[i] = new_mymem[i];
+      mymem[i].Ref();
+  }
   current = new_current;
   mem->Ref();
   imm->Ref();
@@ -1118,7 +1123,7 @@ void ColumnFamilyData::InstallSuperVersion(
   SuperVersion* new_superversion = sv_context->new_superversion.release();
   new_superversion->db_mutex = db_mutex;
   new_superversion->mutable_cf_options = mutable_cf_options;
-  new_superversion->Init(mem_, imm_.current(), current_);
+  new_superversion->Init(mem_,mymem_, imm_.current(), current_);
   SuperVersion* old_superversion = super_version_;
   super_version_ = new_superversion;
   ++super_version_number_;
