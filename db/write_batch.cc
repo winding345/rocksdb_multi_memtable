@@ -1594,12 +1594,13 @@ class MemTableInserter : public WriteBatch::Handler {
   }
 
   void CheckMemtableFull() {
-    assert(0);
+
     if (flush_scheduler_ != nullptr) {
       auto* cfd = cf_mems_->current();
       assert(cfd != nullptr);
       if (cfd->mem()->ShouldScheduleFlush() &&
           cfd->mem()->MarkFlushScheduled()) {
+          assert(0);
         // MarkFlushScheduled only returns true if we are the one that
         // should take action, so no need to dedup further
         flush_scheduler_->ScheduleFlush(cfd);
