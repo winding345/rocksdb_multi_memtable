@@ -1250,8 +1250,10 @@ Status DBImpl::GetImpl(const ReadOptions& read_options,
   bool skip_memtable = (read_options.read_tier == kPersistedTier &&
                         has_unpersisted_data_.load(std::memory_order_relaxed));
   bool done = false;
+  int memtable_index = atoi(std::string(key.data(),key.size() < 2 ? key.size():2).c_str());
+
   if (!skip_memtable) {
-    if (sv->mem->Get(lkey, pinnable_val->GetSelf(), &s, &merge_context,
+    if (sv->mymem[memtable_index]->Get(lkey, pinnable_val->GetSelf(), &s, &merge_context,
                      &range_del_agg, read_options, callback, is_blob_index)) {
       done = true;
       pinnable_val->PinSelf();
