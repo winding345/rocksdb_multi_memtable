@@ -9,6 +9,7 @@
 #include "rocksdb/slice.h"
 #include "rocksdb/options.h"
 #include <iostream>
+#include <stdlib.h>
 
 using namespace std;
 using namespace rocksdb;
@@ -16,6 +17,7 @@ using namespace rocksdb;
 const std::string PATH = "./myrocksdbkv";
 
 int main(){
+    system("rm -rf ./myrocksdbkv");
     DB* db;
     Options options;
     options.create_if_missing = true;

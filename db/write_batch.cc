@@ -1322,6 +1322,7 @@ class MemTableInserter : public WriteBatch::Handler {
     // in memtable add/update.
     MaybeAdvanceSeq();
     CheckMemtableFull();
+    CheckMymemtableFull(memtable_index);
     return ret_status;
   }
 
@@ -1593,6 +1594,7 @@ class MemTableInserter : public WriteBatch::Handler {
   }
 
   void CheckMemtableFull() {
+    assert(0);
     if (flush_scheduler_ != nullptr) {
       auto* cfd = cf_mems_->current();
       assert(cfd != nullptr);
@@ -1604,6 +1606,19 @@ class MemTableInserter : public WriteBatch::Handler {
       }
     }
   }
+
+    void CheckMymemtableFull(int index) {
+        if (flush_scheduler_ != nullptr) {
+            auto* cfd = cf_mems_->current();
+            assert(cfd != nullptr);
+            if (cfd->mymem(index)->ShouldScheduleFlush() &&
+                cfd->mymem(index)->MarkFlushScheduled()) {
+                // MarkFlushScheduled only returns true if we are the one that
+                // should take action, so no need to dedup further
+                flush_scheduler_->ScheduleFlush(cfd);
+            }
+        }
+    }
 
   // The write batch handler calls MarkBeginPrepare with unprepare set to true
   // if it encounters the kTypeBeginUnprepareXID marker.
