@@ -438,7 +438,6 @@ Status WriteBatch::Iterate(Handler* handler) const {
       s = Status::OK();
     }
     std::cout<<"~~~~~~~~~~~~~~~~~~~~~~~~~~~~add by hao~~~~~~~~~~~~~~~"<<std::endl;
-    std::cout<<(int)tag<<std::endl;
     switch (tag) {
       case kTypeColumnFamilyValue:
       case kTypeValue:
@@ -1241,9 +1240,9 @@ class MemTableInserter : public WriteBatch::Handler {
     Status ret_status;
 
     MemTable* mem = cf_mems_->GetMemTable();
+
     MemTable* mymem = cf_mems_->GetMymemTable(99);
-    if(mymem == nullptr)
-      printf("mymem is wawawa\n");
+
     auto* moptions = mem->GetImmutableMemTableOptions();
     // inplace_update_support is inconsistent with snapshots, and therefore with
     // any kind of transactions including the ones that use seq_per_batch

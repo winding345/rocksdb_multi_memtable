@@ -4367,6 +4367,8 @@ ColumnFamilyData* VersionSet::CreateColumnFamily(
   // cfd is not available to client
   new_cfd->CreateNewMemtable(*new_cfd->GetLatestMutableCFOptions(),
                              LastSequence());
+  new_cfd->CreateNewMymemtable(*new_cfd->GetLatestMutableCFOptions(),
+                             LastSequence());
   new_cfd->SetLogNumber(edit->log_number_);
   return new_cfd;
 }
