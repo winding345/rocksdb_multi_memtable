@@ -1246,15 +1246,14 @@ class MemTableInserter : public WriteBatch::Handler {
 
     MemTable* mymem = cf_mems_->GetMymemTable(99);
 
-    auto* moptions = mem->GetImmutableMemTableOptions();
+    auto* moptions = mymem->GetImmutableMemTableOptions();
     // inplace_update_support is inconsistent with snapshots, and therefore with
     // any kind of transactions including the ones that use seq_per_batch
-    std::cout<<!seq_per_batch_<<!moptions->inplace_update_support<<std::endl;
     assert(!seq_per_batch_ || !moptions->inplace_update_support);
     if (!moptions->inplace_update_support) {
       bool mem_res =
-          mem->Add(sequence_, value_type, key, value,
-                   concurrent_memtable_writes_, get_post_process_info(mem));
+          mymem->Add(sequence_, value_type, key, value,
+                   concurrent_memtable_writes_, get_post_process_info(mymem));
       if (UNLIKELY(!mem_res)) {
         assert(seq_per_batch_);
         ret_status = Status::TryAgain("key+seq exists");
