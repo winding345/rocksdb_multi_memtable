@@ -259,6 +259,11 @@ class ColumnFamilyData {
     new_mem->SetID(memtable_id);
     mem_ = new_mem;
   }
+  void SetMymemtable(MemTable* new_mem,int index) {
+    uint64_t memtable_id = last_memtable_id_.fetch_add(1) + 1;
+    new_mem->SetID(memtable_id);
+    mymem_[index] = new_mem;
+  }
 
   // calculate the oldest log needed for the durability of this column family
   uint64_t OldestLogToKeep();

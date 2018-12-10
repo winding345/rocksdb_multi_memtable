@@ -1343,14 +1343,25 @@ Status DBImpl::SwitchMemtable(ColumnFamilyData* cfd, WriteContext* context) {
       creating_new_log ? versions_->NewFileNumber() : logfile_number_;
   const MutableCFOptions mutable_cf_options = *cfd->GetLatestMutableCFOptions();
 
+  MemTable* switch_mem = nullptr;
+  int i = 0;
+  for(i = 0;i < MYMEM_SIZE;++i)
+  {
+      if (cfd->mymem(i)->ShouldScheduleFlush() &&
+          cfd->mymem(i)->MarkFlushScheduled())
+      {
+          switch_mem = cfd->mymem(i);
+      }
+  }
+  assert(switch_mem != nullptr);
   // Set memtable_info for memtable sealed callback
 #ifndef ROCKSDB_LITE
   MemTableInfo memtable_info;
   memtable_info.cf_name = cfd->GetName();
-  memtable_info.first_seqno = cfd->mem()->GetFirstSequenceNumber();
-  memtable_info.earliest_seqno = cfd->mem()->GetEarliestSequenceNumber();
-  memtable_info.num_entries = cfd->mem()->num_entries();
-  memtable_info.num_deletes = cfd->mem()->num_deletes();
+  memtable_info.first_seqno = switch_mem->GetFirstSequenceNumber();
+  memtable_info.earliest_seqno = switch_mem->GetEarliestSequenceNumber();
+  memtable_info.num_entries = switch_mem->num_entries();
+  memtable_info.num_deletes = switch_mem->num_deletes();
 #endif  // ROCKSDB_LITE
   // Log this later after lock release. It may be outdated, e.g., if background
   // flush happens before logging, but that should be ok.
@@ -1451,19 +1462,20 @@ Status DBImpl::SwitchMemtable(ColumnFamilyData* cfd, WriteContext* context) {
     // are no longer needed -- if CF is empty, that means it
     // doesn't need that particular log to stay alive, so we just
     // advance the log number. no need to persist this in the manifest
-    if (loop_cfd->mem()->GetFirstSequenceNumber() == 0 &&
+    if (loop_cfd->mymem(i)->GetFirstSequenceNumber() == 0 &&
         loop_cfd->imm()->NumNotFlushed() == 0) {
       if (creating_new_log) {
         loop_cfd->SetLogNumber(logfile_number_);
       }
-      loop_cfd->mem()->SetCreationSeq(versions_->LastSequence());
+      loop_cfd->mymem(i)->SetCreationSeq(versions_->LastSequence());
     }
   }
 
-  cfd->mem()->SetNextLogNumber(logfile_number_);
+  cfd->mymem(i)->SetNextLogNumber(logfile_number_);
   cfd->imm()->Add(cfd->mem(), &context->memtables_to_free_);
   new_mem->Ref();
-  cfd->SetMemtable(new_mem);
+  cfd->SetMymemtable(new_mem,i);
+
   InstallSuperVersionAndScheduleWork(cfd, &context->superversion_context,
                                      mutable_cf_options);
   if (two_write_queues_) {
