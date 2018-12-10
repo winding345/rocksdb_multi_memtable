@@ -437,7 +437,6 @@ Status WriteBatch::Iterate(Handler* handler) const {
       last_was_try_again = true;
       s = Status::OK();
     }
-    std::cout<<"~~~~~~~~~~~~~~~~~~~~~~~~~~~~add by hao~~~~~~~~~~~~~~~"<<std::endl;
     switch (tag) {
       case kTypeColumnFamilyValue:
       case kTypeValue:
@@ -1242,7 +1241,7 @@ class MemTableInserter : public WriteBatch::Handler {
     MemTable* mem = cf_mems_->GetMemTable();
 
     int memtable_index = atoi(std::string(key.data(),key.size() < 2 ? key.size():2).c_str());
-    printf("memtable_index %d\n",memtable_index);
+    printf("memtable_index %d key %s\n",memtable_index,std::string(key.data(),key.size()).c_str());
 
     MemTable* mymem = cf_mems_->GetMymemTable(memtable_index);
 
