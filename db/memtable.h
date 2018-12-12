@@ -382,9 +382,10 @@ class MemTable {
   void SetID(uint64_t id) { id_ = id; }
 
   uint64_t GetID() const { return id_; }
+  enum FlushStateEnum { FLUSH_NOT_REQUESTED, FLUSH_REQUESTED, FLUSH_SCHEDULED };
+  FlushStateEnum get_flush_state(){return flush_state_;}
 
  private:
-  enum FlushStateEnum { FLUSH_NOT_REQUESTED, FLUSH_REQUESTED, FLUSH_SCHEDULED };
 
   friend class MemTableIterator;
   friend class MemTableBackwardIterator;
