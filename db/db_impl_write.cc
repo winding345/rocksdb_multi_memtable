@@ -1070,6 +1070,7 @@ Status DBImpl::SwitchWAL(WriteContext* write_context) {
       continue;
     }
     if (cfd->OldestLogToKeep() <= oldest_alive_log) {
+        printf("SwitchWAL\n");
       status = SwitchMemtable(cfd, write_context);
       if (!status.ok()) {
         break;
@@ -1128,6 +1129,7 @@ Status DBImpl::HandleWriteBufferFull(WriteContext* write_context) {
   FlushRequest flush_req;
   for (const auto cfd : cfds) {
     cfd->Ref();
+     printf("HandleWriteBufferFull\n");
     status = SwitchMemtable(cfd, write_context);
     cfd->Unref();
     if (!status.ok()) {
@@ -1254,6 +1256,7 @@ Status DBImpl::ScheduleFlushes(WriteContext* context) {
   FlushRequest flush_req;
   Status status;
   while ((cfd = flush_scheduler_.TakeNextColumnFamily()) != nullptr) {
+      printf("ScheduleFlushes\n");
     status = SwitchMemtable(cfd, context);
     bool should_schedule = true;
     if (cfd->Unref()) {
@@ -1347,12 +1350,16 @@ Status DBImpl::SwitchMemtable(ColumnFamilyData* cfd, WriteContext* context) {
   int i = 0;
   for(i = 0;i < MYMEM_SIZE;++i)
   {
+      if (cfd->mymem(i)->ShouldScheduleFlush())
+          printf("ShouldScheduleFlush\n");
+      if (cfd->mymem(i)->MarkFlushScheduled())
+          printf("MarkFlushScheduled\n");
+
       if (cfd->mymem(i)->ShouldScheduleFlush() &&
           cfd->mymem(i)->MarkFlushScheduled())
       {
           switch_mem = cfd->mymem(i);
           break;
-          printf("flush yes\n");
       }
   }
   assert(switch_mem != nullptr);
