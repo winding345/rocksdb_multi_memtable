@@ -841,7 +841,7 @@ class VersionSet {
   }
 
   // Return the last sequence number.
-  uint64_t LastSequence() const {
+  uint64_t  LastSequence() const {
     return last_sequence_.load(std::memory_order_acquire);
   }
 

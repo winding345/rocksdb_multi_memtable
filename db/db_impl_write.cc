@@ -1356,6 +1356,7 @@ Status DBImpl::SwitchMemtable(ColumnFamilyData* cfd, WriteContext* context) {
           break;
       }
   }
+  printf("flush mymem %d\n",i);
   assert(switch_mem != nullptr);
   // Set memtable_info for memtable sealed callback
 #ifndef ROCKSDB_LITE
