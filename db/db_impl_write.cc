@@ -1375,6 +1375,7 @@ Status DBImpl::SwitchMemtable(ColumnFamilyData* cfd, WriteContext* context) {
   const auto preallocate_block_size =
     GetWalPreallocateBlockSize(mutable_cf_options.write_buffer_size);
   auto write_hint = CalculateWALWriteHint();
+        printf("find id %d\n",i);
   mutex_.Unlock();
   {
     std::string log_fname =
@@ -1408,7 +1409,7 @@ Status DBImpl::SwitchMemtable(ColumnFamilyData* cfd, WriteContext* context) {
             immutable_db_options_.recycle_log_file_num > 0, manual_wal_flush_);
       }
     }
-
+      printf("find id %d\n",i);
     if (s.ok()) {
       SequenceNumber seq = versions_->LastSequence();
       new_mem = cfd->ConstructNewMemtable(mutable_cf_options, seq);
@@ -1476,10 +1477,10 @@ Status DBImpl::SwitchMemtable(ColumnFamilyData* cfd, WriteContext* context) {
   }
 
   cfd->mymem(i)->SetNextLogNumber(logfile_number_);
-  cfd->imm()->Add(cfd->mem(), &context->memtables_to_free_);
+  cfd->imm()->Add(cfd->mymem(i), &context->memtables_to_free_);
   new_mem->Ref();
   cfd->SetMymemtable(new_mem,i);
-
+        printf("end\n",i);
   InstallSuperVersionAndScheduleWork(cfd, &context->superversion_context,
                                      mutable_cf_options);
   if (two_write_queues_) {
