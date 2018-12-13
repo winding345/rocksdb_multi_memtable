@@ -1248,7 +1248,7 @@ class MemTableInserter : public WriteBatch::Handler {
     for(size_t x = 0;x < 8;++x)
     {
         printf("%x\t",*(key.data()+x));
-        key_num = key_num*16*16 + (unsigned int)*(key.data()+x);
+        key_num = key_num*16*16 + *(key.data()+x);
     }
     printf("\n");
     printf("%u\n",key_num);
