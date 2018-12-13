@@ -27,7 +27,7 @@
 #include "util/thread_local.h"
 
 #ifndef MYMEM_SIZE
-#define MYMEM_SIZE 100
+#define MYMEM_SIZE 2
 #endif
 
 namespace rocksdb {
