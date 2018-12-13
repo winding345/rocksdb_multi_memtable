@@ -1241,14 +1241,13 @@ class MemTableInserter : public WriteBatch::Handler {
     MemTable* mem = cf_mems_->GetMemTable();
 
     int memtable_index = atoi(std::string(key.data(),key.size() < 2 ? key.size():2).c_str());
-//    int key_num = atoi(std::string(key.data(),8).c_str());
-//    printf("key_num %d\n",key_num);
-//    printf("memtable_index %d\n",memtable_index);
+
     unsigned int key_num = 0;
     for(size_t x = 0;x < 8;++x)
     {
-        printf("%x\t",*(key.data()+x));
-        key_num = key_num*16*16 + *(key.data()+x);
+        char my_c = *(key.data()+x);
+        printf("%x(%u)\t",my_c,my_c);
+        key_num = key_num*16*16 + my_c;
     }
     printf("\n");
     printf("%u\n",key_num);
