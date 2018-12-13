@@ -1241,7 +1241,7 @@ class MemTableInserter : public WriteBatch::Handler {
     MemTable* mem = cf_mems_->GetMemTable();
 
     int memtable_index = atoi(std::string(key.data(),key.size() < 2 ? key.size():2).c_str());
-    int key_num = atoi(std::string(key.data(),8));
+    int key_num = atoi(std::string(key.data(),8).c_str());
     printf("key_num %d\n",key_num);
     printf("memtable_index %d\n",memtable_index);
 //    for(size_t x = 0;x < key.size();++x)
