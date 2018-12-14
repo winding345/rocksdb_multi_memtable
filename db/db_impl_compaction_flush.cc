@@ -1137,7 +1137,6 @@ Status DBImpl::FlushMemTable(ColumnFamilyData* cfd,
 
     if (cfd->imm()->NumNotFlushed() != 0 || !cfd->mem()->IsEmpty() ||
         !cached_recoverable_state_empty_.load()) {
-      printf("Flush Memtable\n");
       s = SwitchMemtable(cfd, &context);
       flush_memtable_id = cfd->imm()->GetLatestMemTableID();
       flush_req.emplace_back(cfd, flush_memtable_id);

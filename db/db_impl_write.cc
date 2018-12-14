@@ -1070,7 +1070,6 @@ Status DBImpl::SwitchWAL(WriteContext* write_context) {
       continue;
     }
     if (cfd->OldestLogToKeep() <= oldest_alive_log) {
-        printf("SwitchWAL\n");
       status = SwitchMemtable(cfd, write_context);
       if (!status.ok()) {
         break;
@@ -1129,7 +1128,6 @@ Status DBImpl::HandleWriteBufferFull(WriteContext* write_context) {
   FlushRequest flush_req;
   for (const auto cfd : cfds) {
     cfd->Ref();
-     printf("HandleWriteBufferFull\n");
     status = SwitchMemtable(cfd, write_context);
     cfd->Unref();
     if (!status.ok()) {
@@ -1256,7 +1254,6 @@ Status DBImpl::ScheduleFlushes(WriteContext* context) {
   FlushRequest flush_req;
   Status status;
   while ((cfd = flush_scheduler_.TakeNextColumnFamily()) != nullptr) {
-      printf("ScheduleFlushes\n");
     status = SwitchMemtable(cfd, context);
     bool should_schedule = true;
     if (cfd->Unref()) {
@@ -1356,7 +1353,6 @@ Status DBImpl::SwitchMemtable(ColumnFamilyData* cfd, WriteContext* context) {
           break;
       }
   }
-  printf("flush mymem %d\n",i);
   assert(switch_mem != nullptr);
   // Set memtable_info for memtable sealed callback
 #ifndef ROCKSDB_LITE

@@ -1240,8 +1240,6 @@ class MemTableInserter : public WriteBatch::Handler {
 
     MemTable* mem = cf_mems_->GetMemTable();
 
-
-
     unsigned int key_num = 0;
     for(size_t x = 0;x < 8;++x)
     {
