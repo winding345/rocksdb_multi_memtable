@@ -173,7 +173,7 @@ struct AdvancedColumnFamilyOptions {
   // Default: 2
   //
   // Dynamically changeable through SetOptions() API
-  int max_write_buffer_number = 2;
+  int max_write_buffer_number = 12;
 
   // The minimum number of write buffers that will be merged together
   // before writing to storage.  If set to 1, then
