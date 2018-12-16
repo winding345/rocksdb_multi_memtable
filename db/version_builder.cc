@@ -143,6 +143,7 @@ class VersionBuilder::Rep {
   }
 
   void CheckConsistency(VersionStorageInfo* vstorage) {
+    return;
 #ifdef NDEBUG
     if (!vstorage->force_consistency_checks()) {
       // Dont run consistency checks in release mode except if
