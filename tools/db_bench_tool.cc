@@ -3826,6 +3826,8 @@ void VerifyDBFromDB(std::string& truth_db_name) {
 
     int64_t stage = 0;
     int64_t num_written = 0;
+    double finish_last_ = Env::Default()->NowMicros();;
+    int64_t bytes_last_ = 0;
     while (!duration.Done(entries_per_batch_)) {
       if (duration.GetStage() != stage) {
         stage = duration.GetStage();
