@@ -3949,6 +3949,25 @@ void VerifyDBFromDB(std::string& truth_db_name) {
         fprintf(stderr, "put error: %s\n", s.ToString().c_str());
         exit(1);
       }
+
+      // test
+
+            if ((num_written) % 250000 == 0) {
+                double now = Env::Default()->NowMicros();
+                double time = now - finish_last_;
+                int64_t ebytes = bytes - bytes_last_;
+                fprintf(stdout, "now= %f  i=%12ld : %11.3f micros/op speed = %.1lf MB/s time = %lf micros\n",
+                        now,
+                        num_written, time / 250000,
+                        ((ebytes / 1048576.8) * 1000000) / time,
+                        time);
+                //PrintStats("rocksdb.stats");
+                fflush(stdout);
+                finish_last_ = now;
+                bytes_last_ = bytes;
+            }
+      //
+
     }
     thread->stats.AddBytes(bytes);
   }
