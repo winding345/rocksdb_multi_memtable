@@ -1246,7 +1246,7 @@ class MemTableInserter : public WriteBatch::Handler {
         key_num = key_num*16*16 + *(unsigned char*)(key.data()+x);
     }
 
-    unsigned int memtable_index = key_num/3000000;
+    unsigned int memtable_index = key_num/2000000;
 
 
     MemTable* mymem = cf_mems_->GetMymemTable(memtable_index);
