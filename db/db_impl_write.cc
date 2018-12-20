@@ -1352,9 +1352,10 @@ Status DBImpl::SwitchMemtable(ColumnFamilyData* cfd, WriteContext* context) {
           switch_mem = cfd->mymem(i);
           break;
       }
+      printf("mem %d(%d)\t",i,cfd->mymem(i)->Getref());
   }
   assert(switch_mem != nullptr);
-  printf("\n~~~%d\t%d\t%d\t%d~~~\n",i,cfd->mymem(i)->Getref(),switch_mem->Getref(),cfd->mem()->Getref());
+  printf("\n~~~%d\t%d~~~\n",i,cfd->mymem(i)->Getref());
   // Set memtable_info for memtable sealed callback
 #ifndef ROCKSDB_LITE
   MemTableInfo memtable_info;
