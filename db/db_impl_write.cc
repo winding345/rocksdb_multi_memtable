@@ -1475,6 +1475,11 @@ Status DBImpl::SwitchMemtable(ColumnFamilyData* cfd, WriteContext* context) {
   cfd->imm()->Add(cfd->mymem(i), &context->memtables_to_free_);
   new_mem->Ref();
   cfd->SetMymemtable(new_mem,i);
+  for(i = 0;i < MYMEM_SIZE;++i)
+  {
+      printf("mem %d(%d)\t",i,cfd->mymem(i)->Getref());
+  }
+  printf("\n");
   InstallSuperVersionAndScheduleWork(cfd, &context->superversion_context,
                                      mutable_cf_options);
   if (two_write_queues_) {
@@ -1487,11 +1492,13 @@ Status DBImpl::SwitchMemtable(ColumnFamilyData* cfd, WriteContext* context) {
           cfd->mymem(j)->Unref();
       }
   }
+
   for(i = 0;i < MYMEM_SIZE;++i)
   {
       printf("mem %d(%d)\t",i,cfd->mymem(i)->Getref());
   }
-  printf("\n");
+  printf("***************************\n");
+
   return s;
 }
 
