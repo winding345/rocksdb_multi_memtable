@@ -1350,7 +1350,7 @@ Status DBImpl::SwitchMemtable(ColumnFamilyData* cfd, WriteContext* context) {
       if(cfd->mymem(i)->get_flush_state() == cfd->mymem(i)->FLUSH_SCHEDULED)
       {
           switch_mem = cfd->mymem(i);
-          break;
+//          break;
       }
       printf("mem %d(%d)\t",i,cfd->mymem(i)->Getref());
   }
