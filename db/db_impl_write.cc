@@ -1345,15 +1345,18 @@ Status DBImpl::SwitchMemtable(ColumnFamilyData* cfd, WriteContext* context) {
 
   MemTable* switch_mem = nullptr;
   int i = 0;
+  int mark = 0;
   for(i = 0;i < MYMEM_SIZE;++i)
   {
       if(cfd->mymem(i)->get_flush_state() == cfd->mymem(i)->FLUSH_SCHEDULED)
       {
           switch_mem = cfd->mymem(i);
+          mark = i;
 //          break;
       }
       printf("mem %d(%d)\t",i,cfd->mymem(i)->Getref());
   }
+  i = mark;
   assert(switch_mem != nullptr);
   printf("\n~~~%d\t%d~~~\n",i,cfd->mymem(i)->Getref());
   // Set memtable_info for memtable sealed callback
