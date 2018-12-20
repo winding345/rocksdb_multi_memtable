@@ -108,6 +108,7 @@ class MemTable {
   // REQUIRES: external synchronization to prevent simultaneous
   // operations on the same MemTable.
   void Ref() { ++refs_; }
+  int Getref(){return refs_;}
 
   // Drop reference count.
   // If the refcount goes to zero return this memtable, otherwise return null.

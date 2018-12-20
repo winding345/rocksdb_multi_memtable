@@ -1354,6 +1354,7 @@ Status DBImpl::SwitchMemtable(ColumnFamilyData* cfd, WriteContext* context) {
       }
   }
   assert(switch_mem != nullptr);
+  printf("\n~~~%d\t%d\t%d~~~\n",cfd->mymem(i)->Getref(),switch_mem->Getref(),cfd->mem()->Getref());
   // Set memtable_info for memtable sealed callback
 #ifndef ROCKSDB_LITE
   MemTableInfo memtable_info;
@@ -1470,7 +1471,7 @@ Status DBImpl::SwitchMemtable(ColumnFamilyData* cfd, WriteContext* context) {
       loop_cfd->mymem(i)->SetCreationSeq(versions_->LastSequence());
     }
   }
-
+  printf("\n~~~%d\t%d\t%d~~~\n",cfd->mymem(i)->Getref(),switch_mem->Getref(),cfd->mem()->Getref());
   cfd->mymem(i)->SetNextLogNumber(logfile_number_);
   cfd->imm()->Add(cfd->mymem(i), &context->memtables_to_free_);
   new_mem->Ref();
