@@ -1354,7 +1354,6 @@ Status DBImpl::SwitchMemtable(ColumnFamilyData* cfd, WriteContext* context) {
       }
   }
   assert(switch_mem != nullptr);
-  printf("\n~~~%d\t%d\t%d~~~\n",cfd->mymem(i)->Getref(),switch_mem->Getref(),cfd->mem()->Getref());
   // Set memtable_info for memtable sealed callback
 #ifndef ROCKSDB_LITE
   MemTableInfo memtable_info;
@@ -1473,31 +1472,21 @@ Status DBImpl::SwitchMemtable(ColumnFamilyData* cfd, WriteContext* context) {
   }
   cfd->mymem(i)->SetNextLogNumber(logfile_number_);
   cfd->imm()->Add(cfd->mymem(i), &context->memtables_to_free_);
+  printf("imm %d\t%d\n",i,cfd->mymem(i));
   new_mem->Ref();
   cfd->SetMymemtable(new_mem,i);
-  for(i = 0;i < MYMEM_SIZE;++i)
-  {
-      printf("mem %d(%d)\t",i,cfd->mymem(i)->Getref());
-  }
-  printf("\n");
-  InstallSuperVersionAndScheduleWork(cfd, &context->superversion_context,
-                                     mutable_cf_options);
-  if (two_write_queues_) {
-    nonmem_write_thread_.ExitUnbatched(&nonmem_w);
-  }
-  for(int j = 0;j < MYMEM_SIZE;++j)
-  {
-      if(j != i)
-      {
-          cfd->mymem(j)->Unref();
-      }
-  }
 
   for(i = 0;i < MYMEM_SIZE;++i)
   {
       printf("mem %d(%d)\t",i,cfd->mymem(i)->Getref());
   }
+  printf("\n");
   printf("***************************\n");
+  InstallSuperVersionAndScheduleWork(cfd, &context->superversion_context,
+                                     mutable_cf_options);
+  if (two_write_queues_) {
+    nonmem_write_thread_.ExitUnbatched(&nonmem_w);
+  }
 
   return s;
 }
