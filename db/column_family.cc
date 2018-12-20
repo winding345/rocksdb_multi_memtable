@@ -376,7 +376,8 @@ void SuperVersion::Init(MemTable* new_mem, MemTable* new_mymem[], MemTableListVe
   for(int i = 0;i < MYMEM_SIZE;++i)
   {
       mymem[i] = new_mymem[i];
-      mymem[i]->Ref();
+      if(mymem[i]->Getref() < 2)
+          mymem[i]->Ref();
   }
   current = new_current;
   mem->Ref();
