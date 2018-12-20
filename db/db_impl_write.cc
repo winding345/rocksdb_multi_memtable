@@ -1471,41 +1471,25 @@ Status DBImpl::SwitchMemtable(ColumnFamilyData* cfd, WriteContext* context) {
       loop_cfd->mymem(i)->SetCreationSeq(versions_->LastSequence());
     }
   }
-        for (i = 0; i < 3; ++i) {
-            printf("mem %d(%d)\t", i, cfd->mymem(i)->Getref());
-        }
-        printf("\n");
   cfd->mymem(i)->SetNextLogNumber(logfile_number_);
-        for (i = 0; i < 3; ++i) {
-            printf("mem %d(%d)\t", i, cfd->mymem(i)->Getref());
-        }
-        printf("\n");
   cfd->imm()->Add(cfd->mymem(i), &context->memtables_to_free_);
-        for (i = 0; i < 3; ++i) {
-            printf("mem %d(%d)\t", i, cfd->mymem(i)->Getref());
-        }
-        printf("\n");
   new_mem->Ref();
-        for (i = 0; i < 3; ++i) {
-            printf("mem %d(%d)\t", i, cfd->mymem(i)->Getref());
-        }
-        printf("\n");
   cfd->SetMymemtable(new_mem,i);
-        for (i = 0; i < 3; ++i) {
-            printf("mem %d(%d)\t", i, cfd->mymem(i)->Getref());
-        }
-        printf("\n");
   InstallSuperVersionAndScheduleWork(cfd, &context->superversion_context,
                                      mutable_cf_options);
-        for (i = 0; i < 3; ++i) {
-            printf("mem %d(%d)\t", i, cfd->mymem(i)->Getref());
-        }
-        printf("\n");
   if (two_write_queues_) {
     nonmem_write_thread_.ExitUnbatched(&nonmem_w);
   }
-  for (i = 0; i < 3; ++i) {
-      printf("mem %d(%d)\t", i, cfd->mymem(i)->Getref());
+  for(int j = 0;j < MYMEM_SIZE;++j)
+  {
+      if(j != i)
+      {
+          cfd->mymem(j)->Unref();
+      }
+  }
+  for(i = 0;i < MYMEM_SIZE;++i)
+  {
+      printf("mem %d(%d)\t",i,cfd->mymem(i)->Getref());
   }
   printf("\n");
   return s;
