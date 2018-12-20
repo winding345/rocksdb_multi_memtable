@@ -1354,7 +1354,7 @@ Status DBImpl::SwitchMemtable(ColumnFamilyData* cfd, WriteContext* context) {
       }
   }
   assert(switch_mem != nullptr);
-  printf("\n~~~%d\t%d\t%d~~~\n",cfd->mymem(i)->Getref(),switch_mem->Getref(),cfd->mem()->Getref());
+  printf("\n~~~%d\t%d\t%d\t%d~~~\n",i,cfd->mymem(i)->Getref(),switch_mem->Getref(),cfd->mem()->Getref());
   // Set memtable_info for memtable sealed callback
 #ifndef ROCKSDB_LITE
   MemTableInfo memtable_info;
