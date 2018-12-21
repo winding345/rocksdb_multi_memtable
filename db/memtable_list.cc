@@ -73,6 +73,7 @@ void MemTableListVersion::Ref() { ++refs_; }
 
 // called by superversion::clean()
 void MemTableListVersion::Unref(autovector<MemTable*>* to_delete) {
+  printf("Unref\n");
   assert(refs_ >= 1);
   --refs_;
   if (refs_ == 0) {
@@ -248,7 +249,7 @@ void MemTableListVersion::Remove(MemTable* m,
                                  autovector<MemTable*>* to_delete) {
   assert(refs_ == 1);  // only when refs_ == 1 is MemTableListVersion mutable
   memlist_.remove(m);
-
+  printf("Remove\n");
   m->MarkFlushed();
   if (max_write_buffer_number_to_maintain_ > 0) {
     memlist_history_.push_front(m);
