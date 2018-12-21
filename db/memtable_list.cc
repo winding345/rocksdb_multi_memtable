@@ -495,6 +495,7 @@ uint64_t MemTableList::ApproximateOldestKeyTime() const {
 }
 
 void MemTableList::InstallNewVersion() {
+  printf("InstallNewVersion\n");
   if (current_->refs_ == 1) {
     // we're the only one using the version, just keep using it
   } else {
