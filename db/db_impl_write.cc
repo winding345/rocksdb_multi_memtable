@@ -1473,18 +1473,10 @@ Status DBImpl::SwitchMemtable(ColumnFamilyData* cfd, WriteContext* context) {
   cfd->mymem(i)->SetNextLogNumber(logfile_number_);
   printf("\n~~~%d\n",cfd->mymem(i)->Getref());
   cfd->imm()->Add(cfd->mymem(i), &context->memtables_to_free_);
-  printf("\n~~~%d\n",cfd->mymem(i)->Getref());
-//  printf("imm %d\t%d\n",i,cfd->mymem(i)->Getref());
   new_mem->Ref();
   printf("SwitchMem\n");
   cfd->SetMymemtable(new_mem,i);
 
-//  for(i = 0;i < MYMEM_SIZE;++i)
-//  {
-//      printf("mem %d(%d)\t",i,cfd->mymem(i)->Getref());
-//  }
-//  printf("\n");
-//  printf("***************************\n");
   InstallSuperVersionAndScheduleWork(cfd, &context->superversion_context,
                                      mutable_cf_options);
   if (two_write_queues_) {
