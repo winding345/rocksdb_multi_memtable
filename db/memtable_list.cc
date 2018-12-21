@@ -37,7 +37,6 @@ void MemTableListVersion::AddMemTable(MemTable* m) {
 
 void MemTableListVersion::UnrefMemTable(autovector<MemTable*>* to_delete,
                                         MemTable* m) {
-  printf("UnrefMemTable %d\n",m->Getref());
   if (m->Unref()) {
     to_delete->push_back(m);
     assert(*parent_memtable_list_memory_usage_ >= m->ApproximateMemoryUsage());
@@ -76,20 +75,19 @@ void MemTableListVersion::Unref(autovector<MemTable*>* to_delete) {
   assert(refs_ >= 1);
   --refs_;
   if (refs_ == 0) {
-    printf("MemTableListVersion::Unref\n");
     // if to_delete is equal to nullptr it means we're confident
     // that refs_ will not be zero
     assert(to_delete != nullptr);
 
-    printf("memlist\t");
-    for (const auto& m : memlist_) {
-      printf("%d\t",m->Getref());
-    }
-    printf("\nmemlist_history_\t");
-    for (const auto& m : memlist_history_) {
-      printf("%d\t",m->Getref());
-    }
-    printf("\n");
+//    printf("memlist\t");
+//    for (const auto& m : memlist_) {
+//      printf("%d\t",m->Getref());
+//    }
+//    printf("\nmemlist_history_\t");
+//    for (const auto& m : memlist_history_) {
+//      printf("%d\t",m->Getref());
+//    }
+//    printf("\n");
 
     for (const auto& m : memlist_) {
       UnrefMemTable(to_delete, m);
@@ -97,7 +95,6 @@ void MemTableListVersion::Unref(autovector<MemTable*>* to_delete) {
     for (const auto& m : memlist_history_) {
       UnrefMemTable(to_delete, m);
     }
-    printf("\n");
     delete this;
   }
 }
@@ -261,7 +258,6 @@ void MemTableListVersion::Remove(MemTable* m,
                                  autovector<MemTable*>* to_delete) {
   assert(refs_ == 1);  // only when refs_ == 1 is MemTableListVersion mutable
   memlist_.remove(m);
-  printf("Remove\n");
   m->MarkFlushed();
   if (max_write_buffer_number_to_maintain_ > 0) {
     memlist_history_.push_front(m);

@@ -358,7 +358,6 @@ bool SuperVersion::Unref() {
 
 void SuperVersion::Cleanup() {
   assert(refs.load(std::memory_order_relaxed) == 0);
-  printf("cleanup\n");
   imm->Unref(&to_delete);
   MemTable* m = mymem[mymem_index]->Unref();
   if (m != nullptr) {
@@ -374,7 +373,6 @@ void SuperVersion::Init(MemTable* new_mem, MemTable* new_mymem[], MemTableListVe
                         Version* new_current) {
   mem = new_mem;
   imm = new_imm;
-    printf("Init\n");
   for(int i = 0;i < MYMEM_SIZE;++i)
   {
       mymem[i] = new_mymem[i];
@@ -914,7 +912,6 @@ MemTable* ColumnFamilyData::ConstructNewMemtable(
 
 void ColumnFamilyData::CreateNewMemtable(
     const MutableCFOptions& mutable_cf_options, SequenceNumber earliest_seq) {
-    printf("CreateNewMemtable\n");
   if (mem_ != nullptr) {
     delete mem_->Unref();
   }
@@ -924,7 +921,6 @@ void ColumnFamilyData::CreateNewMemtable(
 
 void ColumnFamilyData::CreateNewMymemtable(
      const MutableCFOptions& mutable_cf_options, SequenceNumber earliest_seq) {
-    printf("CreateNewMymemtable\n");
   for(int i = 0;i < MYMEM_SIZE;++i)
   {
     if (mymem_[i] != nullptr) {
