@@ -73,22 +73,29 @@ void MemTableListVersion::Ref() { ++refs_; }
 
 // called by superversion::clean()
 void MemTableListVersion::Unref(autovector<MemTable*>* to_delete) {
-  printf("MemTableListVersion::Unref\n");
   assert(refs_ >= 1);
   --refs_;
   if (refs_ == 0) {
+    printf("MemTableListVersion::Unref\n");
     // if to_delete is equal to nullptr it means we're confident
     // that refs_ will not be zero
     assert(to_delete != nullptr);
+
     printf("memlist\t");
     for (const auto& m : memlist_) {
-      UnrefMemTable(to_delete, m);
       printf("%d\t",m->Getref());
     }
     printf("\nmemlist_history_\t");
     for (const auto& m : memlist_history_) {
-      UnrefMemTable(to_delete, m);
       printf("%d\t",m->Getref());
+    }
+    printf("\n");
+
+    for (const auto& m : memlist_) {
+      UnrefMemTable(to_delete, m);
+    }
+    for (const auto& m : memlist_history_) {
+      UnrefMemTable(to_delete, m);
     }
     printf("\n");
     delete this;
