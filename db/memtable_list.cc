@@ -238,6 +238,7 @@ SequenceNumber MemTableListVersion::GetEarliestSequenceNumber(
 // caller is responsible for referencing m
 void MemTableListVersion::Add(MemTable* m, autovector<MemTable*>* to_delete) {
   assert(refs_ == 1);  // only when refs_ == 1 is MemTableListVersion mutable
+  printf("ADD %d\n",m->Getref());
   AddMemTable(m);
 
   TrimHistory(to_delete);
