@@ -1477,7 +1477,7 @@ Status DBImpl::SwitchMemtable(ColumnFamilyData* cfd, WriteContext* context) {
   new_mem->Ref();
   printf("SwitchMem\n");
   cfd->SetMymemtable(new_mem,i);
-
+  cfd->GetSuperVersion()->mymem_index = i;
   InstallSuperVersionAndScheduleWork(cfd, &context->superversion_context,
                                      mutable_cf_options);
   printf("switch_mem %d\n",switch_mem->Getref());

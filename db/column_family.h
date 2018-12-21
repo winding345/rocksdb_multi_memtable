@@ -96,6 +96,7 @@ struct SuperVersion {
   // Accessing members of this class is not thread-safe and requires external
   // synchronization (ie db mutex held or on write thread).
   MemTable* mem;
+  int mymem_index;
   MemTable* mymem[MYMEM_SIZE];
   MemTableListVersion* imm;
   Version* current;
