@@ -73,7 +73,7 @@ void MemTableListVersion::Ref() { ++refs_; }
 
 // called by superversion::clean()
 void MemTableListVersion::Unref(autovector<MemTable*>* to_delete) {
-  printf("Unref\n");
+  printf("MemTableListVersion::Unref\n");
   assert(refs_ >= 1);
   --refs_;
   if (refs_ == 0) {
