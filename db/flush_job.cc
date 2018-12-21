@@ -297,7 +297,7 @@ Status FlushJob::WriteLevel0Table() {
     Arena arena;
     uint64_t total_num_entries = 0, total_num_deletes = 0;
     size_t total_memory_usage = 0;
-    printf("mems size %d\n",mems_.size());
+    printf("mems size %d\n",(int)mems_.size());
     for (MemTable* m : mems_) {
       printf("%d\t",m->Getref());
       ROCKS_LOG_INFO(
