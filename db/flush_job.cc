@@ -297,7 +297,9 @@ Status FlushJob::WriteLevel0Table() {
     Arena arena;
     uint64_t total_num_entries = 0, total_num_deletes = 0;
     size_t total_memory_usage = 0;
+    printf("mems size %d\n",mems_.size());
     for (MemTable* m : mems_) {
+      printf("%d\t",m->Getref());
       ROCKS_LOG_INFO(
           db_options_.info_log,
           "[%s] [JOB %d] Flushing memtable with next log file: %" PRIu64 "\n",
@@ -311,6 +313,7 @@ Status FlushJob::WriteLevel0Table() {
       total_num_deletes += m->num_deletes();
       total_memory_usage += m->ApproximateMemoryUsage();
     }
+    printf("\n");
 
     event_logger_->Log()
         << "job" << job_context_->job_id << "event"
