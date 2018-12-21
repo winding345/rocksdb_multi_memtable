@@ -358,6 +358,7 @@ bool SuperVersion::Unref() {
 
 void SuperVersion::Cleanup() {
   assert(refs.load(std::memory_order_relaxed) == 0);
+  printf("cleanup\n");
   imm->Unref(&to_delete);
   MemTable* m = mem->Unref();
   if (m != nullptr) {
