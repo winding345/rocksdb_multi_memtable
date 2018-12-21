@@ -1476,6 +1476,7 @@ Status DBImpl::SwitchMemtable(ColumnFamilyData* cfd, WriteContext* context) {
   printf("\n~~~%d\n",cfd->mymem(i)->Getref());
 //  printf("imm %d\t%d\n",i,cfd->mymem(i)->Getref());
   new_mem->Ref();
+  printf("SwitchMem\n");
   cfd->SetMymemtable(new_mem,i);
 
 //  for(i = 0;i < MYMEM_SIZE;++i)

@@ -449,6 +449,7 @@ class MemTableConstructor: public Constructor {
         new MemTable(internal_comparator_, ioptions, MutableCFOptions(options_),
                      wb, kMaxSequenceNumber, 0 /* column_family_id */);
     memtable_->Ref();
+    printf("MemTableConstructor\n");
   }
   ~MemTableConstructor() {
     delete memtable_->Unref();
@@ -465,6 +466,7 @@ class MemTableConstructor: public Constructor {
                              MutableCFOptions(options_), write_buffer_manager_,
                              kMaxSequenceNumber, 0 /* column_family_id */);
     memtable_->Ref();
+    printf("FinishImpl\n");
     int seq = 1;
     for (const auto kv : kv_map) {
       memtable_->Add(seq, kTypeValue, kv.first, kv.second);
