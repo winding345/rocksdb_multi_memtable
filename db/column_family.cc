@@ -359,8 +359,10 @@ bool SuperVersion::Unref() {
 void SuperVersion::Cleanup() {
   assert(refs.load(std::memory_order_relaxed) == 0);
   imm->Unref(&to_delete);
-  MemTable* m = mem->Unref();
-  mymem[mymem_index]->Unref();
+  mem->Unref();
+  if(mymem_index >= 10)
+      printf("mymem_index error %d\n",mymem_index);
+  MemTable* m = mymem[mymem_index]->Unref();
   if (m != nullptr) {
     auto* memory_usage = current->cfd()->imm()->current_memory_usage();
     assert(*memory_usage >= m->ApproximateMemoryUsage());
