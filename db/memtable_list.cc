@@ -470,6 +470,7 @@ Status MemTableList::TryInstallMemtableFlushResults(
 // New memtables are inserted at the front of the list.
 void MemTableList::Add(MemTable* m, autovector<MemTable*>* to_delete) {
   assert(static_cast<int>(current_->memlist_.size()) >= num_flush_not_started_);
+  printf("memlist_ %d\tnum_flush_not_started_ %d\n",static_cast<int>(current_->memlist_.size()),num_flush_not_started_);
   InstallNewVersion();
   // this method is used to move mutable memtable into an immutable list.
   // since mutable memtable is already refcounted by the DBImpl,

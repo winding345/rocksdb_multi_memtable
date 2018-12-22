@@ -1473,7 +1473,7 @@ Status DBImpl::SwitchMemtable(ColumnFamilyData* cfd, WriteContext* context) {
   cfd->mymem(i)->SetNextLogNumber(logfile_number_);
 //  printf("\n~~~%d\n",cfd->mymem(i)->Getref());
   cfd->imm()->Add(cfd->mymem(i), &context->memtables_to_free_);
-  switch_mem = cfd->mymem(i);
+//  switch_mem = cfd->mymem(i);
   new_mem->Ref();
 //  printf("SwitchMem\n");
   cfd->SetMymemtable(new_mem,i);
