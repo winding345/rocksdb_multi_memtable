@@ -1366,7 +1366,7 @@ Status DBImpl::SwitchMemtable(ColumnFamilyData* cfd, WriteContext* context) {
   // Log this later after lock release. It may be outdated, e.g., if background
   // flush happens before logging, but that should be ok.
   int num_imm_unflushed = cfd->imm()->NumNotFlushed();
-//  printf("num_imm_unflushed %d\n",num_imm_unflushed);
+  printf("num_imm_unflushed %d\n",num_imm_unflushed);
   DBOptions db_options =
       BuildDBOptions(immutable_db_options_, mutable_db_options_);
   const auto preallocate_block_size =
