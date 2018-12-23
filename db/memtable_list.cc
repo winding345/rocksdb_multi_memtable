@@ -38,7 +38,7 @@ void MemTableListVersion::AddMemTable(MemTable* m) {
 void MemTableListVersion::UnrefMemTable(autovector<MemTable*>* to_delete,
                                         MemTable* m) {
   if (m->Unref()) {
-    printf("imm unref %d\n",m->GetEarliestSequenceNumber());
+    printf("imm unref %lu\n",m->GetEarliestSequenceNumber());
     to_delete->push_back(m);
     assert(*parent_memtable_list_memory_usage_ >= m->ApproximateMemoryUsage());
     *parent_memtable_list_memory_usage_ -= m->ApproximateMemoryUsage();
