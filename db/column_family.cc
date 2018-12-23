@@ -359,7 +359,7 @@ bool SuperVersion::Unref() {
 void SuperVersion::Cleanup() {
   assert(refs.load(std::memory_order_relaxed) == 0);
   imm->Unref(&to_delete);
-  mem->Unref();
+//  mem->Unref();
   if(mymem_index >= 10)
       printf("mymem_index error %d\n",mymem_index);
   MemTable* m = mymem[mymem_index]->Unref();
