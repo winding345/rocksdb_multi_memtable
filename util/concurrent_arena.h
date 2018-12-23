@@ -66,7 +66,7 @@ class ConcurrentArena : public Allocator {
   size_t ApproximateMemoryUsage() const {
     std::unique_lock<SpinMutex> lock(arena_mutex_, std::defer_lock);
     lock.lock();
-    printf("ApproximateMemoryUsage");
+//    printf("ApproximateMemoryUsage");
     return arena_.ApproximateMemoryUsage() - ShardAllocatedAndUnused();
   }
 
@@ -119,7 +119,7 @@ class ConcurrentArena : public Allocator {
 
   size_t ShardAllocatedAndUnused() const {
     size_t total = 0;
-    printf("%lu\n",(unsigned long)shards_.Size());
+//    printf("%lu\n",(unsigned long)shards_.Size());
     for (size_t i = 0; i < shards_.Size(); ++i) {
       total += shards_.AccessAtCore(i)->allocated_and_unused_.load(
           std::memory_order_relaxed);
