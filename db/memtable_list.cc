@@ -38,6 +38,7 @@ void MemTableListVersion::AddMemTable(MemTable* m) {
 void MemTableListVersion::UnrefMemTable(autovector<MemTable*>* to_delete,
                                         MemTable* m) {
   if (m->Unref()) {
+    printf("imm unref %d\n",m->GetEarliestSequenceNumber());
     to_delete->push_back(m);
     assert(*parent_memtable_list_memory_usage_ >= m->ApproximateMemoryUsage());
     *parent_memtable_list_memory_usage_ -= m->ApproximateMemoryUsage();
@@ -78,16 +79,6 @@ void MemTableListVersion::Unref(autovector<MemTable*>* to_delete) {
     // if to_delete is equal to nullptr it means we're confident
     // that refs_ will not be zero
     assert(to_delete != nullptr);
-
-//    printf("memlist\t");
-//    for (const auto& m : memlist_) {
-//      printf("%d\t",m->Getref());
-//    }
-//    printf("\nmemlist_history_\t");
-//    for (const auto& m : memlist_history_) {
-//      printf("%d\t",m->Getref());
-//    }
-//    printf("\n");
 
     for (const auto& m : memlist_) {
       UnrefMemTable(to_delete, m);
@@ -470,7 +461,6 @@ Status MemTableList::TryInstallMemtableFlushResults(
 // New memtables are inserted at the front of the list.
 void MemTableList::Add(MemTable* m, autovector<MemTable*>* to_delete) {
   assert(static_cast<int>(current_->memlist_.size()) >= num_flush_not_started_);
-  printf("memlist_ %d\tnum_flush_not_started_ %d\n",static_cast<int>(current_->memlist_.size()),num_flush_not_started_);
   InstallNewVersion();
   // this method is used to move mutable memtable into an immutable list.
   // since mutable memtable is already refcounted by the DBImpl,
