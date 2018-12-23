@@ -1247,7 +1247,7 @@ class MemTableInserter : public WriteBatch::Handler {
     }
 
     unsigned int memtable_index = key_num/2000000;
-
+    assert(memtable_index < 100);
 
     MemTable* mymem = cf_mems_->GetMymemTable(memtable_index);
 
