@@ -12071,6 +12071,36 @@ utilities/merge_operators/uint64add.cc.s:
 	$(MAKE) -f CMakeFiles\rocksdb-shared.dir\build.make CMakeFiles/rocksdb-shared.dir/utilities/merge_operators/uint64add.cc.s
 .PHONY : utilities/merge_operators/uint64add.cc.s
 
+utilities/nvm_write_cache/nvm_arena.obj: utilities/nvm_write_cache/nvm_arena.cc.obj
+
+.PHONY : utilities/nvm_write_cache/nvm_arena.obj
+
+# target to build an object file
+utilities/nvm_write_cache/nvm_arena.cc.obj:
+	$(MAKE) -f CMakeFiles\rocksdb.dir\build.make CMakeFiles/rocksdb.dir/utilities/nvm_write_cache/nvm_arena.cc.obj
+	$(MAKE) -f CMakeFiles\rocksdb-shared.dir\build.make CMakeFiles/rocksdb-shared.dir/utilities/nvm_write_cache/nvm_arena.cc.obj
+.PHONY : utilities/nvm_write_cache/nvm_arena.cc.obj
+
+utilities/nvm_write_cache/nvm_arena.i: utilities/nvm_write_cache/nvm_arena.cc.i
+
+.PHONY : utilities/nvm_write_cache/nvm_arena.i
+
+# target to preprocess a source file
+utilities/nvm_write_cache/nvm_arena.cc.i:
+	$(MAKE) -f CMakeFiles\rocksdb.dir\build.make CMakeFiles/rocksdb.dir/utilities/nvm_write_cache/nvm_arena.cc.i
+	$(MAKE) -f CMakeFiles\rocksdb-shared.dir\build.make CMakeFiles/rocksdb-shared.dir/utilities/nvm_write_cache/nvm_arena.cc.i
+.PHONY : utilities/nvm_write_cache/nvm_arena.cc.i
+
+utilities/nvm_write_cache/nvm_arena.s: utilities/nvm_write_cache/nvm_arena.cc.s
+
+.PHONY : utilities/nvm_write_cache/nvm_arena.s
+
+# target to generate assembly for a file
+utilities/nvm_write_cache/nvm_arena.cc.s:
+	$(MAKE) -f CMakeFiles\rocksdb.dir\build.make CMakeFiles/rocksdb.dir/utilities/nvm_write_cache/nvm_arena.cc.s
+	$(MAKE) -f CMakeFiles\rocksdb-shared.dir\build.make CMakeFiles/rocksdb-shared.dir/utilities/nvm_write_cache/nvm_arena.cc.s
+.PHONY : utilities/nvm_write_cache/nvm_arena.cc.s
+
 utilities/object_registry_test.obj: utilities/object_registry_test.cc.obj
 
 .PHONY : utilities/object_registry_test.obj
@@ -14539,6 +14569,9 @@ help:
 	@echo ... utilities/merge_operators/uint64add.obj
 	@echo ... utilities/merge_operators/uint64add.i
 	@echo ... utilities/merge_operators/uint64add.s
+	@echo ... utilities/nvm_write_cache/nvm_arena.obj
+	@echo ... utilities/nvm_write_cache/nvm_arena.i
+	@echo ... utilities/nvm_write_cache/nvm_arena.s
 	@echo ... utilities/object_registry_test.obj
 	@echo ... utilities/object_registry_test.i
 	@echo ... utilities/object_registry_test.s
