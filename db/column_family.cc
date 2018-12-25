@@ -926,9 +926,9 @@ void ColumnFamilyData::CreateNewMymemtable(
      const MutableCFOptions& mutable_cf_options, SequenceNumber earliest_seq) {
   for(int i = 0;i < MYMEM_SIZE;++i)
   {
-    if (mymem_[i] != nullptr) {
-      delete mymem_[i]->Unref();
-    }
+//    if (mymem_[i] != nullptr) {
+//      delete mymem_[i]->Unref();
+//    }
     uint64_t memtable_id = last_memtable_id_.fetch_add(1) + 1;
     mymem_[i] = ConstructNewMemtable(mutable_cf_options, earliest_seq);
     mymem_[i]->SetID(memtable_id);
