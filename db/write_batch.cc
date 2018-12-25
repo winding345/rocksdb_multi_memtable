@@ -1245,7 +1245,7 @@ class MemTableInserter : public WriteBatch::Handler {
     {
         key_num = key_num*16*16 + *(unsigned char*)(key.data()+x);
     }
-
+    printf("key_num %d\n",key_num);
     unsigned int memtable_index = key_num/(5000000/128);
     assert(memtable_index <= 128);
 
