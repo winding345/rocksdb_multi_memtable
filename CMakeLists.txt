@@ -589,6 +589,7 @@ set(SOURCES
         util/comparator.cc
         util/compression_context_cache.cc
         util/concurrent_arena.cc
+		utilities/nvm_write_cache/nvm_arena.cc
         util/crc32c.cc
         util/delete_scheduler.cc
         util/dynamic_bloom.cc
@@ -734,8 +735,19 @@ if(WIN32)
   set(SYSTEM_LIBS ${SYSTEM_LIBS} Shlwapi.lib Rpcrt4.lib)
   set(LIBS ${ROCKSDB_STATIC_LIB} ${THIRDPARTY_LIBS} ${SYSTEM_LIBS})
 else()
-  set(SYSTEM_LIBS ${CMAKE_THREAD_LIBS_INIT})
-  set(LIBS ${ROCKSDB_SHARED_LIB} ${THIRDPARTY_LIBS} ${SYSTEM_LIBS})
+	message(STATUS "ENV{PKG_CONFIG_PATH}: " $ENV{PKG_CONFIG_PATH})
+    set(ENV{PKG_CONFIG_PATH} $ENV{PKG_CONFIG_PATH} /lib64/pkgconfig) #
+	    set(ENV{PKG_CONFIG_PATH} $ENV{PKG_CONFIG_PATH}:/usr/local/lib64/pkgconfig)
+	    message(STATUS "after set: " $ENV{PKG_CONFIG_PATH})
+		    find_package(PkgConfig QUIET)
+	    if(PKG_CONFIG_FOUND)
+	        pkg_check_modules(LIBPMEMOBJ++ REQUIRED libpmemobj++)
+	    else()
+	        find_package(LIBPMEMOBJ++ REQUIRED)
+	    endif()
+	    link_libraries(${LIBPMEMOBJ++_LIBRARY_PATH})
+	    set(SYSTEM_LIBS ${CMAKE_THREAD_LIBS_INIT})
+	    set(LIBS ${ROCKSDB_SHARED_LIB} ${THIRDPARTY_LIBS} ${SYSTEM_LIBS} ${LIBPMEMOBJ++_LIBRARIES})
 
   add_library(${ROCKSDB_SHARED_LIB} SHARED ${SOURCES})
   target_link_libraries(${ROCKSDB_SHARED_LIB}
@@ -1001,6 +1013,11 @@ if(WITH_TESTS)
     add_executable(${exename}${ARTIFACT_SUFFIX} ${sourcefile}
       $<TARGET_OBJECTS:testharness>)
     target_link_libraries(${exename}${ARTIFACT_SUFFIX} gtest ${LIBS})
+	if("${exename}" MATCHES "db_bench")
+	            link_directories(/usr/local/lib)
+	            include_directories(/usr/local/include ${LIBPMEMOBJ++_INCLUDE_DIRS})
+	            target_link_libraries(${exename}${ARTIFACT_SUFFIX} cityhash)
+	        endif()
   endforeach(sourcefile ${BENCHMARKS})
 
   # For test util library that is build only in DEBUG mode

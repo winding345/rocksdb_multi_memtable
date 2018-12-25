@@ -28,6 +28,7 @@
 #include "util/concurrent_arena.h"
 #include "util/dynamic_bloom.h"
 #include "util/hash.h"
+#include "utilities/nvm_write_cache/nvm_arena.h"
 
 namespace rocksdb {
 
@@ -397,7 +398,8 @@ class MemTable {
   int refs_;
   const size_t kArenaBlockSize;
   AllocTracker mem_tracker_;
-  ConcurrentArena arena_;
+  //ConcurrentArena arena_;
+  NVMArena arena_;
   unique_ptr<MemTableRep> table_;
   unique_ptr<MemTableRep> range_del_table_;
   bool is_range_del_table_empty_;
