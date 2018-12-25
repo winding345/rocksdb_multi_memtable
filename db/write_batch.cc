@@ -1217,13 +1217,11 @@ class MemTableInserter : public WriteBatch::Handler {
   Status PutCFImpl(uint32_t column_family_id, const Slice& key,
                    const Slice& value, ValueType value_type) {
     // optimize for non-recovery mode
-    printf("1\n");
     if (UNLIKELY(write_after_commit_ && rebuilding_trx_ != nullptr)) {
       WriteBatchInternal::Put(rebuilding_trx_, column_family_id, key, value);
       return Status::OK();
       // else insert the values to the memtable right away
     }
-      printf("2\n");
     Status seek_status;
     if (UNLIKELY(!SeekToColumnFamily(column_family_id, &seek_status))) {
       bool batch_boundry = false;
@@ -1237,18 +1235,14 @@ class MemTableInserter : public WriteBatch::Handler {
       MaybeAdvanceSeq(batch_boundry);
       return seek_status;
     }
-    printf("3\n");
     Status ret_status;
 
     MemTable* mem = cf_mems_->GetMemTable();
-      printf("4\n");
     unsigned int key_num = 0;
-    printf("key_num %d\n",key_num);
     for(size_t x = 0;x < 8;++x)
     {
         key_num = key_num*16*16 + *(unsigned char*)(key.data()+x);
     }
-    printf("key_num %d\n",key_num);
     unsigned int memtable_index = key_num/(5000000/128);
     assert(memtable_index <= 128);
 
