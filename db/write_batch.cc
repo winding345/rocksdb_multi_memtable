@@ -1217,13 +1217,13 @@ class MemTableInserter : public WriteBatch::Handler {
   Status PutCFImpl(uint32_t column_family_id, const Slice& key,
                    const Slice& value, ValueType value_type) {
     // optimize for non-recovery mode
-//    printf("1\n");
+    printf("1\n");
     if (UNLIKELY(write_after_commit_ && rebuilding_trx_ != nullptr)) {
       WriteBatchInternal::Put(rebuilding_trx_, column_family_id, key, value);
       return Status::OK();
       // else insert the values to the memtable right away
     }
-//    printf("2\n");
+    printf("2\n");
     Status seek_status;
     if (UNLIKELY(!SeekToColumnFamily(column_family_id, &seek_status))) {
       bool batch_boundry = false;
@@ -1238,24 +1238,25 @@ class MemTableInserter : public WriteBatch::Handler {
       return seek_status;
     }
     Status ret_status;
-//    printf("3\n");
+    printf("3\n");
     MemTable* mem = cf_mems_->GetMemTable();
     unsigned int key_num = 0;
-//    printf("4 %d\n",key_num);
+    printf("4 %d\n",key_num);
     for(size_t x = 0;x < 8;++x)
     {
         key_num = key_num*16*16 + *(unsigned char*)(key.data()+x);
     }
-//    printf("5 %d\n",key_num);
+    printf("5 %d\n",key_num);
     unsigned int memtable_index = key_num/(5000000/128);
     assert(memtable_index <= 128);
 
     MemTable* mymem = cf_mems_->GetMymemTable(memtable_index);
-
+      printf("6\n");
     auto* moptions = mymem->GetImmutableMemTableOptions();
     // inplace_update_support is inconsistent with snapshots, and therefore with
     // any kind of transactions including the ones that use seq_per_batch
     assert(!seq_per_batch_ || !moptions->inplace_update_support);
+      printf("7\n");
     if (!moptions->inplace_update_support) {
       bool mem_res =
           mymem->Add(sequence_, value_type, key, value,
@@ -1316,6 +1317,7 @@ class MemTableInserter : public WriteBatch::Handler {
         }
       }
     }
+      printf("8\n");
     // optimize for non-recovery mode
     if (UNLIKELY(!ret_status.IsTryAgain() && rebuilding_trx_ != nullptr)) {
       assert(!write_after_commit_);
@@ -1326,9 +1328,13 @@ class MemTableInserter : public WriteBatch::Handler {
     // Since all Puts are logged in transaction logs (if enabled), always bump
     // sequence number. Even if the update eventually fails and does not result
     // in memtable add/update.
+      printf("9\n");
     MaybeAdvanceSeq();
+      printf("10\n");
     CheckMemtableFull();
+      printf("11\n");
     CheckMymemtableFull(memtable_index);
+      printf("12\n");
     return ret_status;
   }
 
