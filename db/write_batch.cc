@@ -1217,13 +1217,13 @@ class MemTableInserter : public WriteBatch::Handler {
   Status PutCFImpl(uint32_t column_family_id, const Slice& key,
                    const Slice& value, ValueType value_type) {
     // optimize for non-recovery mode
-    printf("1\n");
+//    printf("1\n");
     if (UNLIKELY(write_after_commit_ && rebuilding_trx_ != nullptr)) {
       WriteBatchInternal::Put(rebuilding_trx_, column_family_id, key, value);
       return Status::OK();
       // else insert the values to the memtable right away
     }
-    printf("2\n");
+//    printf("2\n");
     Status seek_status;
     if (UNLIKELY(!SeekToColumnFamily(column_family_id, &seek_status))) {
       bool batch_boundry = false;
@@ -1238,20 +1238,20 @@ class MemTableInserter : public WriteBatch::Handler {
       return seek_status;
     }
     Status ret_status;
-    printf("3\n");
+//    printf("3\n");
     MemTable* mem = cf_mems_->GetMemTable();
     unsigned int key_num = 0;
-    printf("4 %d\n",key_num);
+//    printf("4 %d\n",key_num);
     for(size_t x = 0;x < 8;++x)
     {
         key_num = key_num*16*16 + *(unsigned char*)(key.data()+x);
     }
-    printf("5 %d\n",key_num);
+//    printf("5 %d\n",key_num);
     unsigned int memtable_index = key_num/(5000000/128);
     assert(memtable_index <= 128);
 
     MemTable* mymem = cf_mems_->GetMymemTable(memtable_index);
-      printf("6\n");
+//      printf("6\n");
     auto* moptions = mymem->GetImmutableMemTableOptions();
     // inplace_update_support is inconsistent with snapshots, and therefore with
     // any kind of transactions including the ones that use seq_per_batch
@@ -1268,12 +1268,16 @@ class MemTableInserter : public WriteBatch::Handler {
         MaybeAdvanceSeq(BATCH_BOUNDRY);
       }
     } else if (moptions->inplace_callback == nullptr) {
+        printf("here 1\n");
       assert(!concurrent_memtable_writes_);
       mem->Update(sequence_, key, value);
+        printf("here 2\n");
     } else {
+        printf("there 1\n");
       assert(!concurrent_memtable_writes_);
       if (mem->UpdateCallback(sequence_, key, value)) {
       } else {
+          printf("there1 1\n");
         // key not found in memtable. Do sst get, update, add
         SnapshotImpl read_from_snapshot;
         read_from_snapshot.number_ = sequence_;
@@ -1285,7 +1289,7 @@ class MemTableInserter : public WriteBatch::Handler {
 
         std::string prev_value;
         std::string merged_value;
-
+          printf("there1 2\n");
         auto cf_handle = cf_mems_->GetColumnFamilyHandle();
         Status s = Status::NotSupported();
         if (db_ != nullptr && recovering_log_number_ == 0) {
@@ -1294,12 +1298,13 @@ class MemTableInserter : public WriteBatch::Handler {
           }
           s = db_->Get(ropts, cf_handle, key, &prev_value);
         }
-
+          printf("there1 3\n");
         char* prev_buffer = const_cast<char*>(prev_value.c_str());
         uint32_t prev_size = static_cast<uint32_t>(prev_value.size());
         auto status = moptions->inplace_callback(s.ok() ? prev_buffer : nullptr,
                                                  s.ok() ? &prev_size : nullptr,
                                                  value, &merged_value);
+          printf("there1 4\n");
         if (status == UpdateStatus::UPDATED_INPLACE) {
           // prev_value is updated in-place with final value.
           bool mem_res __attribute__((__unused__));
@@ -1308,8 +1313,10 @@ class MemTableInserter : public WriteBatch::Handler {
           assert(mem_res);
           RecordTick(moptions->statistics, NUMBER_KEYS_WRITTEN);
         } else if (status == UpdateStatus::UPDATED) {
+            printf("there1 5\n");
           // merged_value contains the final value.
           bool mem_res __attribute__((__unused__));
+            printf("there1 6\n");
           mem_res =
               mem->Add(sequence_, value_type, key, Slice(merged_value));
           assert(mem_res);
@@ -1328,13 +1335,13 @@ class MemTableInserter : public WriteBatch::Handler {
     // Since all Puts are logged in transaction logs (if enabled), always bump
     // sequence number. Even if the update eventually fails and does not result
     // in memtable add/update.
-      printf("9\n");
+//      printf("9\n");
     MaybeAdvanceSeq();
-      printf("10\n");
+//      printf("10\n");
     CheckMemtableFull();
-      printf("11\n");
+//      printf("11\n");
     CheckMymemtableFull(memtable_index);
-      printf("12\n");
+//      printf("12\n");
     return ret_status;
   }
 
