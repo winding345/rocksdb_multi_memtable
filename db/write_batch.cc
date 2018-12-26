@@ -1258,15 +1258,18 @@ class MemTableInserter : public WriteBatch::Handler {
     assert(!seq_per_batch_ || !moptions->inplace_update_support);
       printf("7\n");
     if (!moptions->inplace_update_support) {
+        printf("why 1\n");
       bool mem_res =
           mymem->Add(sequence_, value_type, key, value,
                    concurrent_memtable_writes_, get_post_process_info(mymem));
+        printf("why 2\n");
       if (UNLIKELY(!mem_res)) {
         assert(seq_per_batch_);
         ret_status = Status::TryAgain("key+seq exists");
         const bool BATCH_BOUNDRY = true;
         MaybeAdvanceSeq(BATCH_BOUNDRY);
       }
+        printf("why 3\n");
     } else if (moptions->inplace_callback == nullptr) {
         printf("here 1\n");
       assert(!concurrent_memtable_writes_);
