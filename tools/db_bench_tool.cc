@@ -90,8 +90,8 @@ using GFLAGS_NAMESPACE::ParseCommandLineFlags;
 using GFLAGS_NAMESPACE::RegisterFlagValidator;
 using GFLAGS_NAMESPACE::SetUsageMessage;
 
-File* time_file;
-File* gb_file;
+FILE* time_file;
+FILE* gb_file;
 
 DEFINE_string(
     benchmarks,
