@@ -10,6 +10,9 @@
 #define PRINT_EVERY_GB_AVG_SPEED
 #define PRINT_EVERY_10S_SPEED
 
+#define GB_PATH "gb_result.csv"
+#define TIME_PATH "time_result.csv"
+
 #ifndef __STDC_FORMAT_MACROS
 #define __STDC_FORMAT_MACROS
 #endif
@@ -3966,6 +3969,7 @@ void VerifyDBFromDB(std::string& truth_db_name) {
 
    // 包括当前GB的写速度和总数据量下的平均写速度
    int FLAGS_num_stat = 250000;
+      printf("%d\t%d\n",FLAGS_num,FLAGS_values_size);
 #ifdef PRINT_EVERY_GB_AVG_SPEED
       if ((num_written) % FLAGS_num_stat == 0) {
           double now = Env::Default()->NowMicros();
@@ -4005,27 +4009,6 @@ void VerifyDBFromDB(std::string& truth_db_name) {
           bytes_last_10s_ = bytes;
       }
 #endif
-
-
-//      // test
-//
-//	  int trace_num = 250000/4;
-//            if ((num_written) % trace_num == 0) {
-//                double now = Env::Default()->NowMicros();
-//                double time = now - finish_last_;
-//                int64_t ebytes = bytes - bytes_last_;
-//                fprintf(stdout, "now= %f  i=%12ld : %11.3f micros/op speed = %.1lf MB/s time = %lf micros\n",
-//                        now,
-//                        num_written, time / trace_num,
-//                        ((ebytes / 1048576.8) * 1000000) / time,
-//                        time);
-//                //PrintStats("rocksdb.stats");
-//                fflush(stdout);
-//                finish_last_ = now;
-//                bytes_last_ = bytes;
-//            }
-//      //
-
     }
     thread->stats.AddBytes(bytes);
   }
