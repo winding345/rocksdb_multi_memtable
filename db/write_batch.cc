@@ -1261,7 +1261,7 @@ class MemTableInserter : public WriteBatch::Handler {
     // any kind of transactions including the ones that use seq_per_batch
     assert(!seq_per_batch_ || !moptions->inplace_update_support);
 //    printf("7\n");
-    printf("%d\n",(int)!moptions->inplace_update_support);
+//    printf("%d\n",(int)!moptions->inplace_update_support);
     if (!moptions->inplace_update_support) {
 //      printf("why 1\n");
       bool mem_res =
