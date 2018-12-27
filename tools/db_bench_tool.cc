@@ -3826,8 +3826,17 @@ void VerifyDBFromDB(std::string& truth_db_name) {
 
     int64_t stage = 0;
     int64_t num_written = 0;
-    double finish_last_ = Env::Default()->NowMicros();;
+    double finish_last_ = Env::Default()->NowMicros();
+    double finish_last_10s_ = finish_last_;
+    double finish_last_gb_ = finish_last_;
+    double start_gb_ = finish_last_;
+    time_t last_ = time(NULL), cur_, last_10s_;
+    last_10s_ = last_;
     int64_t bytes_last_ = 0;
+    int64_t bytes_last_10s_ = bytes_last_;
+    int64_t bytes_last_gb_ = bytes_last_;
+
+
     while (!duration.Done(entries_per_batch_)) {
       if (duration.GetStage() != stage) {
         stage = duration.GetStage();
@@ -3952,24 +3961,66 @@ void VerifyDBFromDB(std::string& truth_db_name) {
         exit(1);
       }
 
-      // test
+   // 包括当前GB的写速度和总数据量下的平均写速度
+#ifdef PRINT_EVERY_GB_AVG_SPEED
+      if ((num_written) % FLAGS_num_stat == 0) {
+          double now = Env::Default()->NowMicros();
+          double time = now - finish_last_gb_;
+          double sum_time  = now - start_gb_;
+          int64_t ebytes = bytes - bytes_last_gb_;
+          int operation_num = ebytes / (value_size_ + key_size_);
 
-	  int trace_num = 250000/4;
-            if ((num_written) % trace_num == 0) {
-                double now = Env::Default()->NowMicros();
-                double time = now - finish_last_;
-                int64_t ebytes = bytes - bytes_last_;
-                fprintf(stdout, "now= %f  i=%12ld : %11.3f micros/op speed = %.1lf MB/s time = %lf micros\n",
-                        now,
-                        num_written, time / trace_num,
-                        ((ebytes / 1048576.8) * 1000000) / time,
-                        time);
-                //PrintStats("rocksdb.stats");
-                fflush(stdout);
-                finish_last_ = now;
-                bytes_last_ = bytes;
-            }
-      //
+          fprintf(stdout, "every_gb,now = %f i=%12ld : %11.3f micros/op cur_gb_speed = %.1lf MB/s avg_gb_time = %.1f MB/s time = %lf\n",
+                  now,
+                  num_written,
+                  time / operation_num,
+                  ((ebytes / 1048576.8) * 1000000) / time,
+                  ((bytes / 1048576.8) * 1000000) / sum_time,
+                  time);
+          finish_last_gb_ = now;
+          bytes_last_gb_ = bytes;
+      }
+#endif
+      cur_ = time(NULL);
+#ifdef PRINT_EVERY_10S_SPEED
+      // every 10s, print write speed
+      if ((cur_ - last_10s_) >= 10) {
+          last_10s_ = cur_;
+          double now = Env::Default()->NowMicros();
+          double time = now - finish_last_10s_;
+          int64_t ebytes = bytes - bytes_last_10s_;
+          int operation_nums = ebytes / (value_size_ + key_size_);
+          fprintf(stdout, "every_10s,now= %f i=%12ld : %11.3f micros/op speed = %.1lf MB/s time = %lf\n",
+                  now,
+                  num_written,
+                  time / operation_nums,
+                  ((ebytes / 1048576.8) * 1000000) / time,
+                  time);
+          fflush(stdout);
+          finish_last_10s_ = now;
+          bytes_last_10s_ = bytes;
+      }
+#endif
+
+
+//      // test
+//
+//	  int trace_num = 250000/4;
+//            if ((num_written) % trace_num == 0) {
+//                double now = Env::Default()->NowMicros();
+//                double time = now - finish_last_;
+//                int64_t ebytes = bytes - bytes_last_;
+//                fprintf(stdout, "now= %f  i=%12ld : %11.3f micros/op speed = %.1lf MB/s time = %lf micros\n",
+//                        now,
+//                        num_written, time / trace_num,
+//                        ((ebytes / 1048576.8) * 1000000) / time,
+//                        time);
+//                //PrintStats("rocksdb.stats");
+//                fflush(stdout);
+//                finish_last_ = now;
+//                bytes_last_ = bytes;
+//            }
+//      //
 
     }
     thread->stats.AddBytes(bytes);
