@@ -1247,7 +1247,7 @@ class MemTableInserter : public WriteBatch::Handler {
         key_num = key_num*16*16 + *(unsigned char*)(key.data()+x);
     }
 //    printf("5 %d\n",key_num);
-    unsigned int memtable_index = key_num/(5000000/64);
+    unsigned int memtable_index = key_num/(20000000/64);
     if(UNLIKELY(memtable_index > 63))
     {
         printf("%d\t%d\n",memtable_index,key_num);
