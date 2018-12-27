@@ -10,8 +10,8 @@
 #define PRINT_EVERY_GB_AVG_SPEED
 #define PRINT_EVERY_10S_SPEED
 
-#define GB_PATH "gb_result.csv"
-#define TIME_PATH "time_result.csv"
+#define GB_PATH "result/gb_result.csv"
+#define TIME_PATH "result/time_result.csv"
 
 #ifndef __STDC_FORMAT_MACROS
 #define __STDC_FORMAT_MACROS
@@ -5765,7 +5765,7 @@ int db_bench_tool(int argc, char** argv) {
   std::string str;
   for(int i = 0;i < argc;++i)
   {
-      str = str + argv[i] + '\n';
+      str = str + argv[i] + '|';
   }
   fprintf(gb_file,"%s",str.c_str());
   fprintf(time_file,"%s",str.c_str());
