@@ -1248,7 +1248,7 @@ class MemTableInserter : public WriteBatch::Handler {
     }
 //    printf("5 %d\n",key_num);
     unsigned int memtable_index = key_num/(5000000/128);
-    if(UNLIKELY(memtable_index >= 127))
+    if(UNLIKELY(memtable_index > 127))
     {
         printf("%d\t%d\n",memtable_index,key_num);
         memtable_index = 127;
