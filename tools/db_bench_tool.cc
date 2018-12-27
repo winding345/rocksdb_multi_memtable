@@ -3965,6 +3965,7 @@ void VerifyDBFromDB(std::string& truth_db_name) {
       }
 
    // 包括当前GB的写速度和总数据量下的平均写速度
+   int FLAGS_num_stat = 250000;
 #ifdef PRINT_EVERY_GB_AVG_SPEED
       if ((num_written) % FLAGS_num_stat == 0) {
           double now = Env::Default()->NowMicros();
