@@ -1248,6 +1248,10 @@ class MemTableInserter : public WriteBatch::Handler {
     }
 //    printf("5 %d\n",key_num);
     unsigned int memtable_index = key_num/(5000000/128);
+    if(UNLIKELY(key_num == 5000000))
+    {
+        memtable_index = 127;
+    }
     assert(memtable_index < 128);
 
     MemTable* mymem = cf_mems_->GetMymemTable(memtable_index);
@@ -1256,10 +1260,10 @@ class MemTableInserter : public WriteBatch::Handler {
     // inplace_update_support is inconsistent with snapshots, and therefore with
     // any kind of transactions including the ones that use seq_per_batch
     assert(!seq_per_batch_ || !moptions->inplace_update_support);
-    printf("7\n");
+//    printf("7\n");
     printf("%d\n",(int)!moptions->inplace_update_support);
     if (!moptions->inplace_update_support) {
-      printf("why 1\n");
+//      printf("why 1\n");
       bool mem_res =
           mymem->Add(sequence_, value_type, key, value,
                    concurrent_memtable_writes_, get_post_process_info(mymem));
