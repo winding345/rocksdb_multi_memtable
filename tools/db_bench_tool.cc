@@ -79,6 +79,8 @@
 #include "utilities/merge_operators.h"
 #include "utilities/merge_operators/bytesxor.h"
 #include "utilities/persistent_cache/block_cache_tier.h"
+#include "cstdio"
+#include "cstdlib"
 
 #ifdef OS_WIN
 #include <io.h>  // open/close
@@ -5761,7 +5763,7 @@ int db_bench_tool(int argc, char** argv) {
   //init
   gb_file = fopen(GB_PATH,"w+");
   time_file = fopen(TIME_PATH,"w+");
-  string str;
+  std::string str;
   for(int i = 0;i < argc;++i)
   {
       str = str + argv[i] + '\n';
