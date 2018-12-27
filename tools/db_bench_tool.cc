@@ -88,6 +88,9 @@ using GFLAGS_NAMESPACE::ParseCommandLineFlags;
 using GFLAGS_NAMESPACE::RegisterFlagValidator;
 using GFLAGS_NAMESPACE::SetUsageMessage;
 
+File* time_file;
+File* gb_file;
+
 DEFINE_string(
     benchmarks,
     "fillseq,"
@@ -3841,6 +3844,7 @@ void VerifyDBFromDB(std::string& truth_db_name) {
     int64_t bytes_last_ = 0;
     int64_t bytes_last_10s_ = bytes_last_;
     int64_t bytes_last_gb_ = bytes_last_;
+    int gb_index = 0,time_index = 0;
 
 
     while (!duration.Done(entries_per_batch_)) {
@@ -3968,8 +3972,8 @@ void VerifyDBFromDB(std::string& truth_db_name) {
       }
 
    // 包括当前GB的写速度和总数据量下的平均写速度
-   int FLAGS_num_stat = 250000;
-      printf("%d\t%d\n",(int)FLAGS_num,(int)FLAGS_value_size);
+   int FLAGS_num_stat = FLAGS_num/1000/(FLAGS_value_size/1024);
+   int FLAGS_num_stat = FLAGS_num/1000/(FLAGS_value_size/1024);
 #ifdef PRINT_EVERY_GB_AVG_SPEED
       if ((num_written) % FLAGS_num_stat == 0) {
           double now = Env::Default()->NowMicros();
@@ -3978,7 +3982,8 @@ void VerifyDBFromDB(std::string& truth_db_name) {
           int64_t ebytes = bytes - bytes_last_gb_;
           int operation_num = ebytes / (value_size_ + key_size_);
 
-          fprintf(stdout, "every_gb,now = %f i=%12ld : %11.3f micros/op cur_gb_speed = %.1lf MB/s avg_gb_time = %.1f MB/s time = %lf\n",
+          fprintf(gb_file, "%d,%.0f,%12ld,%11.3f,%.1lf,%.1f,%.0lf\n",
+                  ++gb_index;
                   now,
                   num_written,
                   time / operation_num,
@@ -3998,7 +4003,8 @@ void VerifyDBFromDB(std::string& truth_db_name) {
           double time = now - finish_last_10s_;
           int64_t ebytes = bytes - bytes_last_10s_;
           int operation_nums = ebytes / (value_size_ + key_size_);
-          fprintf(stdout, "every_10s,now= %f i=%12ld : %11.3f micros/op speed = %.1lf MB/s time = %lf\n",
+          fprintf(time_file, "%d,%.0f,%12ld,%11.3f,%.1lf,%.0lf\n",
+                  ++time_index;
                   now,
                   num_written,
                   time / operation_nums,
@@ -5752,6 +5758,21 @@ void VerifyDBFromDB(std::string& truth_db_name) {
 };
 
 int db_bench_tool(int argc, char** argv) {
+  //init
+  gb_file = fopen(GB_PATH,"w+");
+  time_file = fopen(TIME_PATH,"w+");
+  string str;
+  for(int i = 0;i < argc;++i)
+  {
+      str = str + argv[i] + '\n';
+  }
+  fprintf(gb_file,"%s",str.c_str());
+  fprintf(time_file,"%s",str.c_str());
+
+  fprintf(gb_file,"%s","index,now,num_written,latency(micros/op),cur_gb_speed(MB/s),avg_gb_time(MB/s),time(us)\n");
+
+  fprintf(time_file,"%s","index,now,num_written,latency(micros/op),speed(MB/s),time(us)\n");
+
   rocksdb::port::InstallStackTraceHandler();
   static bool initialized = false;
   if (!initialized) {
@@ -5855,6 +5876,8 @@ int db_bench_tool(int argc, char** argv) {
 
   rocksdb::Benchmark benchmark;
   benchmark.Run();
+  fclose(gb_file);
+  fclose(time_file);
   return 0;
 }
 }  // namespace rocksdb
