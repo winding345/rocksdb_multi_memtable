@@ -1253,13 +1253,13 @@ class MemTableInserter : public WriteBatch::Handler {
     MemTable* mymem = cf_mems_->GetMymemTable(memtable_index);
 //      printf("6\n");
     auto* moptions = mymem->GetImmutableMemTableOptions();
-    assert(moptions != nullptr);
     // inplace_update_support is inconsistent with snapshots, and therefore with
     // any kind of transactions including the ones that use seq_per_batch
     assert(!seq_per_batch_ || !moptions->inplace_update_support);
-      printf("7\n");
+    printf("7\n");
+    printf("%d\n",(int)!moptions->inplace_update_support);
     if (!moptions->inplace_update_support) {
-        printf("why 1\n");
+      printf("why 1\n");
       bool mem_res =
           mymem->Add(sequence_, value_type, key, value,
                    concurrent_memtable_writes_, get_post_process_info(mymem));
