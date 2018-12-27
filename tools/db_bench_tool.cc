@@ -3975,7 +3975,6 @@ void VerifyDBFromDB(std::string& truth_db_name) {
 
    // 包括当前GB的写速度和总数据量下的平均写速度
    int FLAGS_num_stat = FLAGS_num/1000/(FLAGS_value_size/1024);
-   int FLAGS_num_stat = FLAGS_num/1000/(FLAGS_value_size/1024);
 #ifdef PRINT_EVERY_GB_AVG_SPEED
       if ((num_written) % FLAGS_num_stat == 0) {
           double now = Env::Default()->NowMicros();
@@ -3985,7 +3984,7 @@ void VerifyDBFromDB(std::string& truth_db_name) {
           int operation_num = ebytes / (value_size_ + key_size_);
 
           fprintf(gb_file, "%d,%.0f,%12ld,%11.3f,%.1lf,%.1f,%.0lf\n",
-                  ++gb_index;
+                  ++gb_index,
                   now,
                   num_written,
                   time / operation_num,
@@ -4006,7 +4005,7 @@ void VerifyDBFromDB(std::string& truth_db_name) {
           int64_t ebytes = bytes - bytes_last_10s_;
           int operation_nums = ebytes / (value_size_ + key_size_);
           fprintf(time_file, "%d,%.0f,%12ld,%11.3f,%.1lf,%.0lf\n",
-                  ++time_index;
+                  ++time_index,
                   now,
                   num_written,
                   time / operation_nums,
