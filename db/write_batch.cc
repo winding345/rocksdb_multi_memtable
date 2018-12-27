@@ -1253,6 +1253,7 @@ class MemTableInserter : public WriteBatch::Handler {
     MemTable* mymem = cf_mems_->GetMymemTable(memtable_index);
 //      printf("6\n");
     auto* moptions = mymem->GetImmutableMemTableOptions();
+    assert(moption != nullptr);
     // inplace_update_support is inconsistent with snapshots, and therefore with
     // any kind of transactions including the ones that use seq_per_batch
     assert(!seq_per_batch_ || !moptions->inplace_update_support);
@@ -1262,25 +1263,25 @@ class MemTableInserter : public WriteBatch::Handler {
       bool mem_res =
           mymem->Add(sequence_, value_type, key, value,
                    concurrent_memtable_writes_, get_post_process_info(mymem));
-        printf("why 2\n");
+//        printf("why 2\n");
       if (UNLIKELY(!mem_res)) {
         assert(seq_per_batch_);
         ret_status = Status::TryAgain("key+seq exists");
         const bool BATCH_BOUNDRY = true;
         MaybeAdvanceSeq(BATCH_BOUNDRY);
       }
-        printf("why 3\n");
+//        printf("why 3\n");
     } else if (moptions->inplace_callback == nullptr) {
-        printf("here 1\n");
+//        printf("here 1\n");
       assert(!concurrent_memtable_writes_);
       mem->Update(sequence_, key, value);
-        printf("here 2\n");
+//        printf("here 2\n");
     } else {
-        printf("there 1\n");
+//        printf("there 1\n");
       assert(!concurrent_memtable_writes_);
       if (mem->UpdateCallback(sequence_, key, value)) {
       } else {
-          printf("there1 1\n");
+//          printf("there1 1\n");
         // key not found in memtable. Do sst get, update, add
         SnapshotImpl read_from_snapshot;
         read_from_snapshot.number_ = sequence_;
@@ -1292,7 +1293,7 @@ class MemTableInserter : public WriteBatch::Handler {
 
         std::string prev_value;
         std::string merged_value;
-          printf("there1 2\n");
+//          printf("there1 2\n");
         auto cf_handle = cf_mems_->GetColumnFamilyHandle();
         Status s = Status::NotSupported();
         if (db_ != nullptr && recovering_log_number_ == 0) {
@@ -1301,13 +1302,13 @@ class MemTableInserter : public WriteBatch::Handler {
           }
           s = db_->Get(ropts, cf_handle, key, &prev_value);
         }
-          printf("there1 3\n");
+//          printf("there1 3\n");
         char* prev_buffer = const_cast<char*>(prev_value.c_str());
         uint32_t prev_size = static_cast<uint32_t>(prev_value.size());
         auto status = moptions->inplace_callback(s.ok() ? prev_buffer : nullptr,
                                                  s.ok() ? &prev_size : nullptr,
                                                  value, &merged_value);
-          printf("there1 4\n");
+//          printf("there1 4\n");
         if (status == UpdateStatus::UPDATED_INPLACE) {
           // prev_value is updated in-place with final value.
           bool mem_res __attribute__((__unused__));
@@ -1316,10 +1317,10 @@ class MemTableInserter : public WriteBatch::Handler {
           assert(mem_res);
           RecordTick(moptions->statistics, NUMBER_KEYS_WRITTEN);
         } else if (status == UpdateStatus::UPDATED) {
-            printf("there1 5\n");
+//            printf("there1 5\n");
           // merged_value contains the final value.
           bool mem_res __attribute__((__unused__));
-            printf("there1 6\n");
+//            printf("there1 6\n");
           mem_res =
               mem->Add(sequence_, value_type, key, Slice(merged_value));
           assert(mem_res);
@@ -1327,7 +1328,7 @@ class MemTableInserter : public WriteBatch::Handler {
         }
       }
     }
-      printf("8\n");
+//      printf("8\n");
     // optimize for non-recovery mode
     if (UNLIKELY(!ret_status.IsTryAgain() && rebuilding_trx_ != nullptr)) {
       assert(!write_after_commit_);
