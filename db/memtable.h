@@ -386,6 +386,7 @@ class MemTable {
   uint64_t GetID() const { return id_; }
   enum FlushStateEnum { FLUSH_NOT_REQUESTED, FLUSH_REQUESTED, FLUSH_SCHEDULED };
   FlushStateEnum get_flush_state(){return flush_state_;}
+  size_t GetMemtableSize(){return write_buffer_size_.load(std::memory_order_relaxed);}
 
  private:
 

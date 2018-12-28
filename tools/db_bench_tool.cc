@@ -5767,6 +5767,7 @@ int db_bench_tool(int argc, char** argv) {
   {
       str = str + argv[i] + '|';
   }
+  str = str + '\n';
   fprintf(gb_file,"%s",str.c_str());
   fprintf(time_file,"%s",str.c_str());
 
