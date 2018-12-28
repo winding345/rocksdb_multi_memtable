@@ -3982,7 +3982,14 @@ void VerifyDBFromDB(std::string& truth_db_name) {
           double sum_time  = now - start_gb_;
           int64_t ebytes = bytes - bytes_last_gb_;
           int operation_num = ebytes / (value_size_ + key_size_);
-
+          fprintf(stdout, "%d,%.0f,%12ld,%11.3f,%.1lf,%.1f,%.0lf\n",
+                  gb_index,
+                  now,
+                  num_written,
+                  time / operation_num,
+                  ((ebytes / 1048576.8) * 1000000) / time,
+                  ((bytes / 1048576.8) * 1000000) / sum_time,
+                  time);
           fprintf(gb_file, "%d,%.0f,%12ld,%11.3f,%.1lf,%.1f,%.0lf\n",
                   ++gb_index,
                   now,
