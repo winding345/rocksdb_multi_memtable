@@ -1619,7 +1619,6 @@ class MemTableInserter : public WriteBatch::Handler {
                 cfd->mymem(index)->MarkFlushScheduled()) {
                 // MarkFlushScheduled only returns true if we are the one that
                 // should take action, so no need to dedup further
-                printf("index %d\tsize %lld\n",index,(long long)cfd->mymem(index)->GetMemtableSize());
                 flush_scheduler_->ScheduleFlush(cfd);
             }
         }
