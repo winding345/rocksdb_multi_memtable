@@ -1225,21 +1225,21 @@ void LevelCompactionBuilder::SetupInitialFiles() {
       } else {
         // didn't find the compaction, clear the inputs
         start_level_inputs_.clear();
-        if (start_level_ == 0&&0 == 1) {
-          skipped_l0_to_base = true;
-          // L0->base_level may be blocked due to ongoing L0->base_level
-          // compactions. It may also be blocked by an ongoing compaction from
-          // base_level downwards.
-          //
-          // In these cases, to reduce L0 file count and thus reduce likelihood
-          // of write stalls, we can attempt compacting a span of files within
-          // L0.
-          if (PickIntraL0Compaction()) {
-            output_level_ = 0;
-            compaction_reason_ = CompactionReason::kLevelL0FilesNum;
-            break;
-          }
-        }
+//        if (start_level_ == 0) {
+//           skipped_l0_to_base = true;
+//           L0->base_level may be blocked due to ongoing L0->base_level
+//           compactions. It may also be blocked by an ongoing compaction from
+//           base_level downwards.
+//
+//           In these cases, to reduce L0 file count and thus reduce likelihood
+//           of write stalls, we can attempt compacting a span of files within
+//           L0.
+//          if (PickIntraL0Compaction()) {
+//            output_level_ = 0;
+//            compaction_reason_ = CompactionReason::kLevelL0FilesNum;
+//            break;
+//          }
+//        }
       }
     }
   }
