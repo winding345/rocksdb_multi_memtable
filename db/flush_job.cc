@@ -145,7 +145,7 @@ void FlushJob::ReportFlushInputSize(const autovector<MemTable*>& mems) {
   for (auto* mem : mems) {
     input_size += mem->ApproximateMemoryUsage();
   }
-  printf("flush %ll\n",(long long)input_size);
+  printf("flush %lld\n",(long long)input_size);
   ThreadStatusUtil::IncreaseThreadOperationProperty(
       ThreadStatus::FLUSH_BYTES_MEMTABLES,
       input_size);
