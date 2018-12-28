@@ -161,6 +161,7 @@ Status DBImpl::FlushMemTableToOutputFile(
   // is unlocked by the current thread.
   if (s.ok()) {
     s = flush_job.Run(&logs_with_prep_tracker_, &file_meta);
+    printf("key size:%lld\tvalue size:%lld\n",(long long)file_meta.raw_key_size,(long long)file_meta.raw_value_size);
   } else {
     flush_job.Cancel();
   }
