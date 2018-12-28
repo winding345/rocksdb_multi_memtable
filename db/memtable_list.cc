@@ -285,6 +285,7 @@ void MemTableList::PickMemtablesToFlush(autovector<MemTable*>* ret) {
   AutoThreadOperationStageUpdater stage_updater(
       ThreadStatus::STAGE_PICK_MEMTABLES_TO_FLUSH);
   const auto& memlist = current_->memlist_;
+  int i = 3;
   for (auto it = memlist.rbegin(); it != memlist.rend(); ++it) {
     MemTable* m = *it;
     if (!m->flush_in_progress_) {
@@ -295,10 +296,12 @@ void MemTableList::PickMemtablesToFlush(autovector<MemTable*>* ret) {
       }
       m->flush_in_progress_ = true;  // flushing will start very soon
       ret->push_back(m);
-//      break;
+
+      if(--i == 0)
+          break;
     }
   }
-//  if(memlist.size() == 0)
+  if(memlist.size() == 0)
     flush_requested_ = false;  // start-flush request is complete
 }
 
