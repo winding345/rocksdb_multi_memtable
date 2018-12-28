@@ -295,9 +295,11 @@ void MemTableList::PickMemtablesToFlush(autovector<MemTable*>* ret) {
       }
       m->flush_in_progress_ = true;  // flushing will start very soon
       ret->push_back(m);
+      break;
     }
   }
-  flush_requested_ = false;  // start-flush request is complete
+  if(memlist.size() == 0)
+    flush_requested_ = false;  // start-flush request is complete
 }
 
 void MemTableList::RollbackMemtableFlush(const autovector<MemTable*>& mems,
