@@ -301,6 +301,7 @@ Status FlushJob::WriteLevel0Table() {
     Arena arena;
     uint64_t total_num_entries = 0, total_num_deletes = 0;
     size_t total_memory_usage = 0;
+
     for (MemTable* m : mems_) {
       ROCKS_LOG_INFO(
           db_options_.info_log,
@@ -325,6 +326,11 @@ Status FlushJob::WriteLevel0Table() {
         << GetFlushReasonString(cfd_->GetFlushReason());
 
     {
+      if(memtables.size() != 1)
+      {
+        printf("flush imm size error %d~\n",memtables.size());
+      }
+      assert(memtables.size() == 1);
       ScopedArenaIterator iter(
           NewMergingIterator(&cfd_->internal_comparator(), &memtables[0],
                              static_cast<int>(memtables.size()), &arena));
@@ -403,6 +409,7 @@ Status FlushJob::WriteLevel0Table() {
   InternalStats::CompactionStats stats(CompactionReason::kFlush, 1);
   stats.micros = db_options_.env->NowMicros() - start_micros;
   stats.bytes_written = meta_.fd.GetFileSize();
+  printf("bytes_written %d~\n",stats.bytes_written);
   MeasureTime(stats_, FLUSH_TIME, stats.micros);
   cfd_->internal_stats()->AddCompactionStats(0 /* level */, stats);
   cfd_->internal_stats()->AddCFStats(InternalStats::BYTES_FLUSHED,
