@@ -328,7 +328,7 @@ Status FlushJob::WriteLevel0Table() {
     {
       if(memtables.size() != 1)
       {
-        printf("flush imm size error %d~\n",memtables.size());
+        printf("flush imm size error %lld~\n",(long long)memtables.size());
       }
       assert(memtables.size() == 1);
       ScopedArenaIterator iter(
@@ -409,7 +409,7 @@ Status FlushJob::WriteLevel0Table() {
   InternalStats::CompactionStats stats(CompactionReason::kFlush, 1);
   stats.micros = db_options_.env->NowMicros() - start_micros;
   stats.bytes_written = meta_.fd.GetFileSize();
-  printf("bytes_written %d~\n",stats.bytes_written);
+  printf("bytes_written %lld~\n",(long long)stats.bytes_written);
   MeasureTime(stats_, FLUSH_TIME, stats.micros);
   cfd_->internal_stats()->AddCompactionStats(0 /* level */, stats);
   cfd_->internal_stats()->AddCFStats(InternalStats::BYTES_FLUSHED,
