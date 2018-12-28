@@ -323,11 +323,6 @@ Status FlushJob::WriteLevel0Table() {
         << GetFlushReasonString(cfd_->GetFlushReason());
 
     {
-      if(memtables.size() != 1)
-      {
-        printf("flush imm size error %lld~\n",(long long)memtables.size());
-      }
-      assert(memtables.size() == 1);
       ScopedArenaIterator iter(
           NewMergingIterator(&cfd_->internal_comparator(), &memtables[0],
                              static_cast<int>(memtables.size()), &arena));
