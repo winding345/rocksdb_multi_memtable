@@ -145,7 +145,7 @@ void FlushJob::ReportFlushInputSize(const autovector<MemTable*>& mems) {
   for (auto* mem : mems) {
     input_size += mem->ApproximateMemoryUsage();
   }
-  printf("flush %lld~~~\n",(long long)input_size);
+//  printf("flush %lld~~~\n",(long long)input_size);
   ThreadStatusUtil::IncreaseThreadOperationProperty(
       ThreadStatus::FLUSH_BYTES_MEMTABLES,
       input_size);
@@ -409,7 +409,6 @@ Status FlushJob::WriteLevel0Table() {
   InternalStats::CompactionStats stats(CompactionReason::kFlush, 1);
   stats.micros = db_options_.env->NowMicros() - start_micros;
   stats.bytes_written = meta_.fd.GetFileSize();
-  printf("bytes_written %lld~\n",(long long)stats.bytes_written);
   MeasureTime(stats_, FLUSH_TIME, stats.micros);
   cfd_->internal_stats()->AddCompactionStats(0 /* level */, stats);
   cfd_->internal_stats()->AddCFStats(InternalStats::BYTES_FLUSHED,

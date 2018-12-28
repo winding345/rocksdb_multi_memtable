@@ -160,8 +160,6 @@ Status DBImpl::FlushMemTableToOutputFile(
   // and EventListener callback will be called when the db_mutex
   // is unlocked by the current thread.
   if (s.ok()) {
-    printf("key size:%lld\tvalue size:%lld\tfile size %lld\n",(long long)file_meta.raw_key_size,
-            (long long)file_meta.raw_value_size,(long long)(file_meta.fd.file_size));
     s = flush_job.Run(&logs_with_prep_tracker_, &file_meta);
       } else {
     flush_job.Cancel();
