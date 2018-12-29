@@ -249,7 +249,7 @@ void DBImpl::NotifyOnFlushBegin(ColumnFamilyData* cfd, FileMetaData* file_meta,
     info.cf_name = cfd->GetName();
     // TODO(yhchiang): make db_paths dynamic in case flush does not
     //                 go to L0 in the future.
-    info.file_path = MakeTableFileName(cfd->ioptions()->cf_paths[0].path,
+    info.file_path = MakeTableFileName("/dev/shm/zhuchenghao",
                                        file_meta->fd.GetNumber());
     info.thread_id = env_->GetThreadID();
     info.job_id = job_id;
