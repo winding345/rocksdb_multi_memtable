@@ -128,7 +128,6 @@ std::string TableFileName(const std::vector<DbPath>& db_paths, uint64_t number,
   } else {
     path = db_paths[path_id].path;
   }
-  printf("%s\n",path.c_str());
   return MakeTableFileName(path, number);
 }
 
